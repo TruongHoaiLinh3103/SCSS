@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sass Documentation | Sass Tutorial</title>
+  <meta name="description" content="Sass&#26159;&#19990;&#30028;&#19978;&#26368;&#25104;&#29087;&#12289;&#31283;&#23450;&#21644;&#24378;&#22823;&#30340;&#19987;&#19994;&#32423;CSS&#25193;&#23637;&#35821;&#35328;">
+  <meta name="keywords" content="Sass Tutorial,Sass,Less,sass&#22312;&#32447;&#36716;&#25442;,CSS&#39044;&#22788;&#29702;&#22120;,Sass Tutorial,sass&#20013;&#22269;">
+  <meta name="author" content="Sass Tutorial">
+  <link rel="icon" href="favicons/275--favicon.ico">
+  <link rel="stylesheet" href="css/css-bootstrap.min.css">
+  <link rel="stylesheet" href="css/css-style.css">
+</head>
+
+<body>
+  <script src="js/js-ggcn.js"></script>
+  <div class="container">
+  <script>ggny1();</script>
+  </div>
+  <div class="container-fluid">
+    <div class="col-sm-3 w-tabnav" id="w-docs-nav">
+      <aside id="aside">
+        <h3>Document directory</h3>
+        <ul id="toc">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#syntax">Syntax</a></li>
+          <li><a href="#using-sass">Using Sass (Using Sass)</a> <br>
+            <ul>
+              <li><a href="#plugin">Rack / Rails / Merb plugin (Plugin)</a></li>
+              <li><a href="#caching">Caching</a></li>
+              <li><a href="#options">Configuration options</a></li>
+              <li><a href="#syntax-selection">Syntax Selection</a></li>
+              <li><a href="#gs-encodings">Encodings</a></li>
+            </ul>
+          </li>
+          <li><a href="#css-extensions">CSS extensions</a> <br>
+            <ul>
+              <li><a href="#nested-rules">Nested rules</a></li>
+              <li><a href="#parent-selector">Reference Parent Selectors: &amp;</a></li>
+              <li><a href="#nested-properties">Nested properties</a></li>
+              <li><a href="#placeholder-selectors">Selector the Placeholder: <code>%foo</code>(at The the Placeholder at
+                  The Selectors:
+                  <code>%foo</code>)</a></li>
+            </ul>
+          </li>
+          <li><a href="#comments">Comments: <code>/* */</code>and <code>//</code>(Comments: <code>/* */</code>and
+              <code>//</code>)</a></li>
+          <li><a href="#sassscript">SassScript</a> <br>
+            <ul>
+              <li><a href="#interactive-shell">Interactive shell</a></li>
+              <li><a href="#variables_">The Variables: <code>$</code>(at The <code>$</code>the Variables: )</a></li>
+              <li><a href="#data-types">Data Types</a> <br>
+                <ul>
+                  <li><a href="#sass-script-strings">Strings</a></li>
+                  <li><a href="#lists">Lists</a></li>
+                  <li><a href="#maps">Maps</a></li>
+                  <li><a href="#colors">Colors</a></li>
+                </ul>
+              </li>
+              <li><a href="#operations">Operations</a> <br>
+                <ul>
+                  <li><a href="#number-operations"> Number Operations</a> <br>
+                    <ul>
+                      <li><a href="#division-and-slash">Division and <code>/</code>(Division and <code>/</code>)</a>
+                      </li>
+                      <li><a href="#subtraction">Subtraction, negative, and <code>-</code>(Subtraction, a Numbers
+                          Negative, and <code>-</code>)</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#color-operations">Color operations</a></li>
+                  <li><a href="#string-operations">String operations</a></li>
+                  <li><a href="#boolean-operations">Boolean operations</a></li>
+                  <li><a href="#list-operations">List operations</a></li>
+                </ul>
+              </li>
+              <li><a href="#parentheses">Parentheses</a></li>
+              <li><a href="#functions">Functions</a> <br>
+                <ul>
+                  <li><a href="#keyword-arguments">Keyword Arguments</a></li>
+                </ul>
+              </li>
+              <li><a href="#interpolation_">The Interpolation: <code>#{}&#65288;</code>at The <code>#{}</code>the
+                  Interpolation: )</a></li>
+              <li><a href="#parent-script">SassScript <code>&amp;</code>( <code>&amp;</code>in SassScript)</a>
+              </li>
+              <li><a href="#variable-defaults">The Default Variable: <code>!default</code>(Variable
+                  <code>!default</code>Defaults: )</a></li>
+            </ul>
+          </li>
+          <li><a href="#directives"><code>@</code>Rules <code>@</code>and Directives</a> <br>
+            <ul>
+              <li><a href="#import"><code>@import</code></a> <br>
+                <ul>
+                  <li><a href="#partials">Partials</a></li>
+                  <li><a href="#nested-import">Nesting <code>@import</code>(Nested <code>@import</code>)</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#media"><code>@media</code></a></li>
+              <li><a href="#extend"><code>@extend</code></a> <br>
+                <ul>
+                  <li><a href="#how-it-works">How it works</a></li>
+                  <li><a href="#extending-complex-selectors">Extended Complex Selectors</a></li>
+                  <li><a href="#multiple-extends">Multiple Extends</a></li>
+                  <li><a href="#chaining-extends">Chaining Extends</a></li>
+                  <li><a href="#selector-sequences">Selector Sequences</a> <br>
+                    <ul>
+                      <li><a href="#merging-selector-sequences">Merging Selector Sequences</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="#placeholders"> <code>@extend</code>-Only <code>@extend</code>Selectors</a></li>
+                  <li><a href="#the-optional-flag"><code>!optional</code>The <code>!optional</code>
+                      Flag</a></li>
+                  <li><a href="#extend-in-directives">Instruction <code>@extend</code>( <code>@extend</code>in
+                      Directives)</a></li>
+                </ul>
+              </li>
+              <li><a href="#at-root"><code>@at-root</code></a> <br>
+                <ul>
+                  <li><a href="#at-root-without-and-at-root-with"><code>@at-root (without: ...)</code> with
+                      <code>@at-root (with: ...)</code></a></li>
+                </ul>
+              </li>
+              <li><a href="#debug"><code>@debug</code></a></li>
+              <li><a href="#warn"><code>@warn</code></a></li>
+              <li><a href="#error"><code>@error</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#control-directives-expressions">Control Directives &amp; Expressions</a> <br>
+            <ul>
+              <li><a href="#if"><code>if()</code></a></li>
+              <li><a href="#if_"><code>@if</code></a></li>
+              <li><a href="#for"><code>@for</code></a></li>
+              <li><a href="#each-directive"><code>@each</code></a> <br>
+                <ul>
+                  <li><a href="#each-multi-assign">Multiple Assignment</a></li>
+                </ul>
+              </li>
+              <li><a href="#while"><code>@while</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#mixins">Mixin Directives</a> <br>
+            <ul>
+              <li><a href="#defining_a_mixin">A Mixed of Definition (a mixin A): <code>@mixin</code>(A The Mixin the
+                  Defining:
+                  <code>@mixin</code>)</a></li>
+              <li><a href="#including_a_mixin">Shame that software mixing style Reference: <code>@include</code>(A Mixin
+                  Including:
+                  <code>@include</code>)</a></li>
+              <li><a href="#mixin-arguments">Arguments</a> <br>
+                <ul>
+                  <li><a href="#keyword-arguments-mixin">Keyword Arguments</a></li>
+                  <li><a href="#variable-arguments">Variable Arguments</a></li>
+                </ul>
+              </li>
+              <li><a href="#mixin-content">Passing Content Blocks to a Mixin</a> <br>
+                <ul>
+                  <li><a href="#variable-scope-and-content-blocks">Variable Scope and Content Blocks</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#function_directives">Function Directives</a></li>
+          <li><a href="#output-style">Output style</a> <br>
+            <ul>
+              <li><a href="#nested"><code>:nested</code></a></li>
+              <li><a href="#expanded"><code>:expanded</code></a></li>
+              <li><a href="#compact"><code>:compact</code></a></li>
+              <li><a href="#compressed"><code>:compressed</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#extending-sass">Extending Sass</a> <br>
+            <ul>
+              <li><a href="#defining-custom-sass-functions"> Defining Custom Sass Functions</a>
+              </li>
+              <li><a href="#cache-stores">Cache Stores</a></li>
+              <li><a href="#custom-importers">Custom Importers</a></li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+    </div>
+    <div class="col-sm-9" id="w-docs-content">
+      <article id="article">
+        <div id="article-content">
+          <p data-anchor-id="8gnt">Sass is a CSS extension that allows you to use <a href="#variables_">variables</a> ,
+            <a href="#nested_rules">nested rules</a> , <a href="#mixins">mixins</a> , <a href="#import">inline
+              imports</a> and other functions based on CSS syntax to make CSS more powerful and elegant.. Using Sass and
+            the <a href="http://compass-style.org" target="_blank">Compass style library can</a> help better organize
+            and manage style files and develop projects more efficiently.</p>
+          <div class="md-section-divider"></div>
+          <h2 id="features" data-anchor-id="d7s7">Features</h2>
+          <ul data-anchor-id="l9ol">
+            <li>Fully compatible with CSS3</li>
+            <li>Adding variables, nesting, mixins and other functions to the CSS language</li>
+            <li>Calculation of color and attribute values &#8203;&#8203;through functions</li>
+            <li>Provide <a href="#control_directives__expressions">control instructions</a> and other advanced features
+            </li>
+            <li>Custom output format</li>
+          </ul>
+          <div class="md-section-divider"></div>
+          <h2 id="syntax" data-anchor-id="7d3u">Syntax</h2>
+          <p data-anchor-id="w71q">Sass has two syntax formats. The first is SCSS (Sassy CSS), which is also the format
+            used in this reference example. This format is only extended based on CSS3 syntax, which means that each CSS
+            style sheet is an equivalent SCSS file. In addition, SCSS also supports most CSS hacks writing
+            browser-specific prefixes and syntax (vendor-specific syntax), for example, <a href="http://msdn.microsoft.com/en-us/library/ms530752.aspx" target="_blank">IE ancient
+              <code>filter</code>grammar</a> . This syntax style sheet files need to be <code>.scss</code>as expand the
+            name.</p>
+          <p data-anchor-id="lzpb">The other, the earliest syntax, is called Indented Sass, or "Sass", which provides a
+            more introductory way to write CSS. It uses indentation instead of curly braces to indicate selector
+            nesting, and uses line breaks instead of semicolons to separate attributes. Some people think this is easier
+            to read and faster to write than SCSS. The indented syntax has all the features of Sass, although there are
+            slight differences in <a href="http://sass-lang.com/documentation/file.INDENTED_SYNTAX.html" target="_blank">syntax</a> ; the specific differences are described in the <a href="http://sass-lang.com/documentation/file.INDENTED_SYNTAX.html" target="_blank">indented syntax
+              reference</a> . Use this syntax style sheet file needs to <code>.sass</code>extension.</p>
+          <p data-anchor-id="awhi">Files of any syntax can be <a href="#import">imported</a> directly <a href="#import">into</a> files of another syntax, as long as you use the sass-convert command line tool,
+            you can convert one syntax to another:</p>
+          <pre data-anchor-id="2bnp"><code class="language-sass"># Convert Sass to SCSS
+  $ sass-convert style.sass style.scss
+  
+  # Convert SCSS to Sass
+  $ sass-convert style.scss style.ss
+  </code></pre>
+          <p data-anchor-id="zemp">Note that this command <em>does not</em> generate a CSS file. To generate CSS files,
+            use described elsewhere <code>sass</code>command.</p>
+          <div class="md-section-divider"></div>
+          <h2 id="using-sass" data-anchor-id="mgep">Using Sass (Using Sass)</h2>
+          <p data-anchor-id="cd0d">Sass can be used in three ways: as a command line tool, as a standalone Ruby module,
+            or as a plug-in to the Rack-enabled framework, including Ruby on Rails and Merb. Either way, you need to
+            install the Sass gem first:</p>
+          <pre data-anchor-id="853k"><code class="language-sass">gem install sass
+  </code></pre>
+          <p data-anchor-id="2hlc">If you are using Windows, you may first need to <a href="http://rubyinstaller.org/download.html" target="_blank">install Ruby</a> .</p>
+          <p data-anchor-id="0rhh">If you want to run Sass from the command line, just use</p>
+          <pre data-anchor-id="08bl"><code class="language-sass">sass input.scss output.css
+  </code></pre>
+          <p data-anchor-id="njpg">You can also use Sass commands to monitor changes in a Sass file and automatically
+            compile to update CSS:</p>
+          <pre data-anchor-id="94z5"><code class="language-sass">sass --watch input.scss:output.css
+  </code></pre>
+          <p data-anchor-id="i60h">If you have many Sass files in your directory, you can also use Sass commands to
+            monitor the entire directory:</p>
+          <pre data-anchor-id="jb0n"><code class="language-sass">sass --watch app/sass:public/stylesheets
+  </code></pre>
+          <p data-anchor-id="4va3">Use <code>sass --help</code>can list the full help documentation.</p>
+          <p data-anchor-id="n3s1">Using Sass in Ruby is also very easy. After the Sass gem is installed, run it
+            <code>require "sass"</code>, and then use <a href="http://sass-lang.com/documentation/Sass/Engine.html" target="_blank">Sass :: Engine as</a> follows:</p>
+          <pre data-anchor-id="64ee"><code class="language-sass">engine = Sass::Engine.new("#main {background-color: #0000ff}", :syntax =&gt; :scss)
+  engine.render #=&gt; "#main { background-color: #0000ff; }\n"
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="plugin" data-anchor-id="reto">Rack / Rails / Merb plugin (Plugin)</h3>
+          <p data-anchor-id="nmz8">To enable Sass in versions prior to Rails 3, you need to add a line of code to the
+            environment.rb file:</p>
+          <pre data-anchor-id="z72a"><code class="language-sass">config.gem "sass"
+  </code></pre>
+          <p data-anchor-id="8d70">For Rails 3, add this line to the Gemfile:</p>
+          <pre data-anchor-id="u5u2"><code class="language-sass">gem "sass"
+  </code></pre>
+          <p data-anchor-id="9vyw">To enable Sass in Merb, it is necessary <code>config/dependencies.rb</code>to add a
+            line of code file:</p>
+          <pre data-anchor-id="9t2u"><code class="language-sass">dependency "merb-haml"
+  </code></pre>
+          <p data-anchor-id="17js">Sass is enabled in the Rack application, you need to <code>config.ru</code>add the
+            following code file:</p>
+          <pre data-anchor-id="mul0"><code class="language-sass">require 'sass/plugin/rack'
+  use Sass::Plugin::Rack
+  </code></pre>
+          <p data-anchor-id="zo8f">Sass stylesheets work differently from views. It does not contain any dynamic
+            content, so it only needs to generate CSS when the Sass file is updated. By default, <code>.sass</code>and
+            the <code>.scss</code>file is placed (This can be done in a public / stylesheets / sass directory <a href="#template_location-option"><code>:template_location</code></a>configured options). Then, when
+            needed, they are compiled into corresponding CSS files and placed in the public / stylesheets directory. For
+            example, the public / stylesheets / sass / main.scss file will be compiled into the public / stylesheets /
+            main.css file.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="caching" data-anchor-id="oo9m">Caching</h3>
+          <p data-anchor-id="xm1q">By default, the template (Template) after Sass cached automatically compiled and <a href="#partials">partials</a> , doing so can significantly improve recompilation speed processing Sass the
+            template is cut into a plurality of files and by <a href="#import"><code>@import</code></a>effect is
+            particularly remarkable when the introduction, form a large file .</p>
+          <p data-anchor-id="ptzz">If the case does not use frames, Sass will be put into the template cache
+            <code>.sass-cache</code>directory. In Rails and Merb, cached templates are placed in
+            <code>tmp/sass-cache</code>directories. This directory can be <a href="#cache_location-option"><code>:cache_location</code></a>customized with options. If you do not want
+            Sass caching feature is enabled, you can <a href="#cache-option"><code>:cache</code></a>option to
+            <code>false</code>.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="options" data-anchor-id="ppoj">Configuration options</h3>
+          <p data-anchor-id="ucl0">Options can be set through the <a href="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#options-instance_method" target="_blank">Sass :: Plugin # options</a> hash, specifically set in Rails <code>environment.rb</code>or
+            in <code>config.ru</code>a file in Rack :</p>
+          <pre data-anchor-id="ycio"><code class="language-sass">Sass::Plugin.options[:style] = :compact
+  </code></pre>
+          <p data-anchor-id="xvl2">Alternatively, if you use Merb, you can <code>init.rb</code>set a
+            <code>Merb::Plugin.config[:sass]</code>hash in the file :</p>
+          <pre data-anchor-id="uii9"><code class="language-sass">Merb::Plugin.config[:sass][:style] = :compact
+  </code></pre>
+          <p data-anchor-id="7x50">Or by passing an option (options) hash to <a href="http://sass-lang.com/documentation/Sass/Engine.html#initialize-instance_method" target="_blank">Sass
+              :: Engine # the initialize</a> , <br>
+            all relevant options are also available through labeling <code>sass</code>and <code>scss</code>use the
+            command-line executable file. Available options are:</p>
+          <table data-anchor-id="uzoc" class="table table-striped-white table-bordered">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>: style</td>
+                <td>Set the code style of the output CSS. You can view the <a href="#output_style">output code style</a>
+                  .</td>
+              </tr>
+              <tr>
+                <td>: syntax</td>
+                <td>The syntax of the input file, which <code>:sass</code>means indented syntax, and
+                  <code>:scss</code>CSS extended syntax. Only useful if you construct a <a href="http://sass-lang.com/documentation/Sass/Engine.html" target="_blank">Sass :: Engine</a>
+                  instance yourself ; when you use <a href="http://sass-lang.com/documentation/Sass/Plugin.html" target="_blank">Sass :: Plugin</a> , it will automatically set the correct value. The default
+                  setting is <code>:sass</code>.</td>
+              </tr>
+              <tr>
+                <td>: property_syntax</td>
+                <td>The mandatory indent syntax document uses a property syntax. If the correct syntax is not used, an
+                  error will be thrown. <code>:new</code>A value indicates that a colon is mandatory after the attribute
+                  name. For example: <code>color: #0f3</code>or <code>width: $main_width</code>. <code>:old</code>A
+                  value indicates that a colon is required before the attribute name. For example:
+                  <code>:color #0f3</code>or <code>:width $main_width</code>. By default, both syntaxes are valid. This
+                  option <code>.scss</code>is not valid for SCSS ( ) documents.</td>
+              </tr>
+              <tr>
+                <td>: cache</td>
+                <td>Whether Sass should be cached when parsing, allowing faster compilation speed. The default setting
+                  is <code>true</code>.</td>
+              </tr>
+              <tr>
+                <td>: read_cache</td>
+                <td>If this option is set and no <code>:cache</code>option is set , then the cache exists and the Sass
+                  cache is read-only. If there is no cache, it will not compile.</td>
+              </tr>
+              <tr>
+                <td>: cache_store</td>
+                <td>If this option is set to an instance of a subclass of <a href="http://sass-lang.com/documentation/Sass/CacheStores/Base.html" target="_blank">Sass ::
+                    CacheStores :: Base</a> , the cache store will be used to store and retrieve cached compilation
+                  results. The default setting is <a href="http://sass-lang.com/documentation/Sass/CacheStores/Filesystem.html" target="_blank">Sass ::
+                    CacheStores :: Filesystem</a> and the <a href="#cache_location-option"><code>:cache_location</code>option is</a> initialized .</td>
+              </tr>
+              <tr>
+                <td>: never_update</td>
+                <td>The CSS file should never be updated, even if the template file changes. Setting it to
+                  <code>true</code>may result in small performance improvements. It always defaults to
+                  <code>false</code>. This option is only meaningful in Rack, Ruby on Rails, or Merb.</td>
+              </tr>
+              <tr>
+                <td>: always_update</td>
+                <td>CSS files should always be updated, even when each controller is accessed, not just when the
+                  template is modified. The default is <code>false</code>. This option is only meaningful in Rack, Ruby
+                  on Rails, or Merb.</td>
+              </tr>
+              <tr>
+                <td>: always_check</td>
+                <td>Sass templates should always be checked for updates, even when each controller is accessed, not just
+                  when the service starts. If a Sass template is updated, it will be recompiled and the corresponding
+                  CSS file will be overwritten. Default in production mode <code>false</code>, otherwise
+                  <code>true</code>. This option is only meaningful in Rack, Ruby on Rails, or Merb.</td>
+              </tr>
+              <tr>
+                <td>: poll</td>
+                <td>If so <code>true</code>, always use <a href="http://sass-lang.com/documentation/Sass/Plugin/Compiler.html#watch-instance_method" target="_blank">Sass :: Plugin :: Compiler # watch</a> backend polling instead of the backend of the
+                  native file system.</td>
+              </tr>
+              <tr>
+                <td>: full_exception</td>
+                <td>Whether the errors in the Sass code should provide a detailed description in the generated CSS file.
+                  If set to <code>true</code>, this error will be displayed in the comments of the CSS file and at the
+                  top of the page (supported browsers). The error content includes line numbers and source code
+                  snippets. Otherwise, exceptions will be alerted in Ruby code. Default in production mode
+                  <code>false</code>, otherwise <code>true</code>.</td>
+              </tr>
+              <tr>
+                <td>: template_location</td>
+                <td>A path to the directory of the Sass template in the root directory. If hashed,
+                  <code>:css_location</code>it is ignored and this option specifies the mapping between the input and
+                  output directories. A binary list can also be given instead of a hash. The default is
+                  <code>css_location + "/sass"</code>. This option is only meaningful in Rack, Ruby on Rails, or Merb.
+                  Note that if multiple template locations are specified, they are all placed in the import path,
+                  allowing you to import between them. <br>
+                  <strong>It should be noted that since it can take many possible formats, this option should only be
+                    set directly and should not be accessed or modified. Use <a href="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#template_location_array-instance_method" target="_blank">Sass :: Plugin # template_location_array</a> , <a href="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#add_template_location-instance_method" target="_blank">Sass :: Plugin # add_template_location</a> , <a href="http://sass-lang.com/documentation/Sass/Plugin/Configuration.html#remove_template_location-instance_method" target="_blank">Sass :: Plugin # remove_template_location</a> methods instead.</strong></td>
+              </tr>
+              <tr>
+                <td>: css_location</td>
+                <td>The path of the CSS file output. When the <code>:template_location</code>option is a hash, this
+                  option will be ignored. The default setting is <code>"./public/stylesheets"</code>. This option is
+                  only meaningful in Rack, Ruby on Rails, or Merb.</td>
+              </tr>
+              <tr>
+                <td>: cache_location</td>
+                <td>Among them, <code>sassc</code>the path where the cache file should be written. Defaults in Rails and
+                  Merb <code>"./tmp/sass-cache"</code>, otherwise defaults <code>"./.sass-cache"</code>. If the <a href="#cache_location-option"><code>:cache_store</code>option</a> is set , this will be ignored.
+                </td>
+              </tr>
+              <tr>
+                <td>: unix_newlines</td>
+                <td>If true, use Unix-style newlines when writing files. Only meaningful on Windows and only when Sass
+                  is written to a file (in Rack, Rails, or Merb, when using <a href="http://sass-lang.com/documentation/Sass/Plugin.html" target="_blank">Sass :: Plugin</a>
+                  directly , or when using a command line executable).</td>
+              </tr>
+              <tr>
+                <td>: filename</td>
+                <td>The file name of the rendered file. This is completely for reporting errors and is set automatically
+                  when using Rack, Rails, or Merb.</td>
+              </tr>
+              <tr>
+                <td>: line</td>
+                <td>The line number of the first line of the Sass template. The line number used to report the error.
+                  This setting is useful if the Sass template is embedded in a Ruby file.</td>
+              </tr>
+              <tr>
+                <td>: load_paths</td>
+                <td>An array containing the file system or <a href="#import"><code>@import</code></a>Sass template paths
+                  imported via directives. They may be strings, <code>Pathname</code>(pathname) objects, or subclasses
+                  of <a href="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass ::
+                    Importers :: Base</a> . This option defaults to the working directory, and in Rack, Rails, or Merb,
+                  this option has any value <code>:template_location</code>. Load path may also be made <a href="http://sass-lang.com/documentation/Sass.html#load_paths-class_method" target="_blank">Sass.load_paths</a> and <code>SASS_PATH</code>inform the environment variables.</td>
+              </tr>
+              <tr>
+                <td>: filesystem_importer</td>
+                <td>A subclass of <a href="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass :: Importers :: Base</a> to handle the loading path of ordinary strings. This
+                  should import files from the file system. This should be a Class object that takes a string parameter
+                  (load path) via the constructor and inherits from <a href="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass :: Importers
+                    :: Base</a> . The default is <a href="http://sass-lang.com/documentation/Sass/Importers/Filesystem.html" target="_blank">Sass ::
+                    Importers :: Filesystem</a> .</td>
+              </tr>
+              <tr>
+                <td>: sourcemap</td>
+                <td>Controls how sourcemaps are produced. These sourcemaps tell the browser how to find Sass styles and
+                  generate each CSS style. This option has three valid values: <strong><code>:auto</code></strong>use
+                  relative URIs where possible, assuming source styles are provided on any server you use, their
+                  relative positions will be the same as the local file system. If a relative URI is not available, it
+                  will be replaced by "file:". <strong><code>:file</code></strong>Always use the "file:" URI, which will
+                  work locally but cannot be deployed to a remote server. <strong><code>:inline</code></strong>Contains
+                  the complete source text from the sourcemap. This is most convenient, but may produce very large
+                  sourcemap files. In the end, the <strong><code>:none</code></strong>sourcemap file is never generated.
+                </td>
+              </tr>
+              <tr>
+                <td>: line_numbers</td>
+                <td>When set to <code>true</code>, the line number and file name of the defined selector will be
+                  injected as comments into the compiled CSS. This is useful for debugging, especially when using <a href="#import"><code>@import</code></a>sum <a href="#mixin"><code>@mixin</code></a>. This option has
+                  a specific name <code>:line_comments</code>. When using the <code>:compressed</code>output style or
+                  use <code>:debug_info</code>/ <code>:trace_selectors</code>option This option is automatically
+                  disabled.</td>
+              </tr>
+              <tr>
+                <td>: trace_selectors</td>
+                <td>When set to <code>true</code>, the full trajectory of <a href="#import"><code>@import</code></a>sum
+                  will be injected before each selector <a href="#mixin"><code>@mixin</code></a>. This is useful when
+                  debugging passed <a href="#import"><code>@import</code></a>and <a href="#mixin"><code>@mixin</code></a>included style sheets in the browser . This option will replace
+                  <code>:line_comments</code>option, and is <code>:debug_info</code>the option to replace. When
+                  <code>:compressed</code>the output style, this option is automatically disabled.</td>
+              </tr>
+              <tr>
+                <td>: debug_info</td>
+                <td>When set to <code>true</code>, the line number and file name of the defined selector will be
+                  injected into the compiled CSS and recognized by the browser. Used for <a href="https://addons.mozilla.org/en-US/firefox/addon/103988" target="_blank">FireSass Firebug
+                    extension</a> to display Sass file names and line numbers. When <code>:compressed</code>the output
+                  style, this option is automatically disabled.</td>
+              </tr>
+              <tr>
+                <td>: custom</td>
+                <td>This option can be used for individual application settings to make the data available for <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">custom Sass
+                    functionality</a> .</td>
+              </tr>
+              <tr>
+                <td>: quiet</td>
+                <td>When set to <code>true</code>, causes warning messages to be disabled.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="md-section-divider"></div>
+          <h3 id="syntax-selection" data-anchor-id="2q40">Syntax Selection</h3>
+          <p data-anchor-id="tp8f">The Sass command line tool will use the file extension to determine which syntax you
+            are using, but it is not always a file name. <code>sass</code>The command line program defaults to indented
+            syntax, but if the input should be parsed into SCSS syntax, you can pass <code>--scss</code>options to her.
+            In addition, you can use the <code>scss</code>command line program, which <code>sass</code>is exactly the
+            same as the program, but its default syntax is SCSS.</p>
+          <div class="md-section-divider"></div>
+          <h3 data-anchor-id="m4iq" id="gs-encodings">Encodings</h3>
+          <p data-anchor-id="dw0x">When running Sass in Ruby 1.9 and above, Sass is sensitive to the encoding format of
+            the file. First, it will determine the encoding format of the style file according to the <a href="http://www.w3.org/TR/2013/WD-css-syntax-3-20130919/#determine-the-fallback-encoding" target="_blank">CSS spec</a> . If it fails, it will detect the Ruby string encoding. That is, first check
+            Sass Unicode byte order mark, then the <code>@charset</code>statement is the last string code Ruby, if not
+            detected, use the default UTF-8 encoding.</p>
+          <p data-anchor-id="4qu1">To explicitly specify the encoding of the style sheet, as with CSS, use
+            <code>@charset</code>declarations. Insert it at the beginning of the style file (without any whitespace and
+            comments) <code>@charset "encoding-name";</code>, and Sass will compile the file with the given encoding
+            format. Note that no matter what encoding you use, it must be convertible to the Unicode character set.</p>
+          <p data-anchor-id="n3tj">By default, Sass always outputs CSS files in UTF-8 encoding. If and only if the
+            output file contains non-ASCII characters in the output file will be added to <code>@charset</code>declare,
+            in the compressed mode, the (compressed mode) using UTF-8 byte order mark instead of @charset declaration
+            statement in a compressed mode.</p>
+          <div class="md-section-divider"></div>
+          <h2 id="css-extensions" data-anchor-id="o0si">CSS extensions</h2>
+          <div class="md-section-divider"></div>
+          <h3 id="nested-rules" data-anchor-id="3vqs">Nested rules</h3>
+          <p data-anchor-id="hhva">Sass allows you to nest a CSS style into another style. The inner style is only
+            applicable to the selector of the outer style (note: it can be understood as a level selector). For example:
+          </p>
+          <pre data-anchor-id="ofrk"><code class="language-scss">#main p {
+    color: #00ff00;
+    width: 97%;
+  
+    .redbox {
+      background-color: #ff0000;
+      color: #000000;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="jecj">Compiles to:</p>
+          <pre data-anchor-id="l8np"><code class="language-css">#main p {
+    color: #00ff00;
+    width: 97%; }
+    #main p .redbox {
+      background-color: #ff0000;
+      color: #000000; }
+  </code></pre>
+          <p data-anchor-id="55wb">This helps avoid parent selector duplication, which is much simpler than multi-level
+            nested selectors in complex CSS layouts. E.g:</p>
+          <pre data-anchor-id="xvhd"><code class="language-scss">#main {
+    width: 97%;
+  
+    p, div {
+      font-size: 2em;
+      a { font-weight: bold; }
+    }
+  
+    pre { font-size: 3em; }
+  }
+  </code></pre>
+          <p data-anchor-id="72w9">Compiles to:</p>
+          <pre data-anchor-id="ucih"><code class="language-css">#main {
+    width: 97%; }
+    #main p, #main div {
+      font-size: 2em; }
+      #main p a, #main div a {
+        font-weight: bold; }
+    #main pre {
+      font-size: 3em; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="parent-selector" data-anchor-id="2fw6">Reference Parent Selectors: &amp;</h3>
+          <p data-anchor-id="joju">Sometimes the need for direct use nested outer parent selector, this is very useful,
+            for example, you might like to selectors hover styles, or when the body has a style element, in these cases,
+            you can <code>&amp;</code>Character To explicitly insert the specified parent selector. E.g:</p>
+          <pre data-anchor-id="q0fp"><code class="language-scss">a {
+    font-weight: bold;
+    text-decoration: none;
+    &amp;:hover { text-decoration: underline; }
+    body.firefox &amp; { font-weight: normal; }
+  }
+  </code></pre>
+          <p data-anchor-id="4mj6">Compiles to:</p>
+          <pre data-anchor-id="8ee7"><code class="language-css">a {
+    font-weight: bold;
+    text-decoration: none; }
+    a:hover {
+      text-decoration: underline; }
+    body.firefox a {
+      font-weight: normal; }
+  </code></pre>
+          <p data-anchor-id="frbi"><code>&amp;</code>Will be replaced with the parent selector rendered in the CSS file.
+            This means that if you have a multi-level nested rule, the parent selector will be
+            <code>&amp;</code>completely decomposed before being replaced. E.g:</p>
+          <pre data-anchor-id="5pmx"><code class="language-scss">#main {
+    color: black;
+    a {
+      font-weight: bold;
+      &amp;:hover { color: red; }
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="m143">Compiles to:</p>
+          <pre data-anchor-id="mlcw"><code class="language-css">#main {
+    color: black; }
+    #main a {
+      font-weight: bold; }
+      #main a:hover {
+        color: red; }
+  </code></pre>
+          <p data-anchor-id="uyo4"><code>&amp;</code>Must appear at the beginning of the selector (note: the first
+            character as the selector), but can follow the suffix and will be added after the parent selection. E.g:</p>
+          <pre data-anchor-id="3ea3"><code class="language-scss">#main {
+    color: black;
+    &amp;-sidebar { border: 1px solid; }
+  }
+  </code></pre>
+          <p data-anchor-id="qv3a">Compiles to:</p>
+          <pre data-anchor-id="xuoe"><code class="language-css">#main {
+    color: black; }
+    #main-sidebar {
+      border: 1px solid; }
+  </code></pre>
+          <p data-anchor-id="4ewh">Father selector <code>&amp;</code>is used as a suffix of time, Sass will throw an
+            error.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="nested-properties" data-anchor-id="5l6x">Nested properties</h3>
+          <p data-anchor-id="lu8q">CSS has some attributes follow the same "namespace"; such as,
+            <code>font-family</code>, <code>font-size</code>, and <code>font-weight</code>are in the
+            <code>font</code>namespace. In CSS, if you want to set a bunch of properties in the same namespace, you have
+            to output it every time. Sass provides a shortcut for this: you only need to enter the namespace once, and
+            then nest the child attributes inside it. E.g:</p>
+          <pre data-anchor-id="ip8q"><code class="language-scss">.funky {
+    font: {
+      family: fantasy;
+      size: 30em;
+      weight: bold;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="3x24">Compiles to:</p>
+          <pre data-anchor-id="3oso"><code class="language-css">.funky {
+    font-family: fantasy;
+    font-size: 30em;
+    font-weight: bold; }
+  </code></pre>
+          <p data-anchor-id="ri2n">Namespaces can also have their own attribute values. E.g:</p>
+          <pre data-anchor-id="ej2j"><code class="language-scss">.funky {
+    font: 20px/24px fantasy {
+      weight: bold;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="ckok">Compiles to:</p>
+          <pre data-anchor-id="itd9"><code class="language-css">.funky {
+    font: 20px/24px fantasy;
+      font-weight: bold;
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="placeholder-selectors" data-anchor-id="6f24">Placeholder selector: <code>%foo</code>(the Placeholder
+            the Selectors: <code>%foo</code>)</h3>
+          <p data-anchor-id="bjfo">Sass supports a special type of selector called a placeholder selector. These look
+            like class and id selectors, except <code>#</code>or <code>.</code>by <code>%</code>replacement. They need
+            to be used in <a href="#extend"><code>@extend</code>directives</a> ; see <a href="#placeholders"><code>@extend</code>-Only Selectors</a> for more information .</p>
+          <p data-anchor-id="d8rr">When they are used alone, that <code>@extend</code>is, unused, rule sets that use
+            placeholder selectors will not be rendered as CSS.</p>
+          <div class="md-section-divider"></div>
+          <h2 id="comments" data-anchor-id="2cit">Comments: <code>/* */</code>and <code>//</code>(Comments:
+            <code>/* */</code>and <code>//</code>)</h2>
+          <p data-anchor-id="gypy">Sass supports standard CSS multi-line comments as <code>/* */</code>well as
+            single-line comments <code>//</code>. Wherever possible, multi-line comments are retained in the output CSS,
+            while single-line comments are deleted. E.g:</p>
+          <pre data-anchor-id="5hbf"><code class="language-scss">/* This comment is
+   * several lines long.
+   * since it uses the CSS comment syntax,
+   * it will appear in the CSS output. */
+  body { color: black; }
+  
+  // These comments are only one line long each.
+  // They won't appear in the CSS output,
+  // since they use the single-line comment syntax.
+  a { color: green; }
+  </code></pre>
+          <p data-anchor-id="rfu6">Compiles to:</p>
+          <pre data-anchor-id="8kie"><code class="language-css">/* This comment is
+   * several lines long.
+   * since it uses the CSS comment syntax,
+   * it will appear in the CSS output. */
+  body {
+    color: black; }
+  
+  a {
+    color: green; }
+  </code></pre>
+          <p data-anchor-id="h9bm">If the first letter of a multi-line comment is <code>!</code>, the comment is always
+            retained in the output CSS, even in compressed output mode. This can be used to add a copyright notice to
+            your generated CSS.</p>
+          <p data-anchor-id="c05f">Using interpolation, you can output variable values &#8203;&#8203;into multi-line comments, for
+            example:</p>
+          <pre data-anchor-id="0aqc"><code class="language-scss">$version: "1.2.3";
+      /* This CSS is generated by My Snazzy Framework version #{$version}. */
+  </code></pre>
+          <p data-anchor-id="fgns">Compiles to:</p>
+          <pre data-anchor-id="twgl"><code class="language-css">/* This CSS is generated by My Snazzy Framework version 1.2.3. */
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h2 id="sassscript" data-anchor-id="ujw6">SassScript</h2>
+          <p data-anchor-id="3ouf">In addition to the syntax of ordinary CSS properties, Sass supports some extensions
+            called SassScript. SassScript allows attributes to use variables, arithmetic and extra features. SassScript
+            can be used on any property value.</p>
+          <p data-anchor-id="qzck">SassScript can also be used to generate selectors and attribute names, which is very
+            useful when writing <a href="#mixins">mixins</a> . This is done through <a href="#interpolation_">interpolation</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="interactive-shell" data-anchor-id="rd99">Interactive shell</h3>
+          <p data-anchor-id="p51x">The Interactive Shell can test the functionality of SassScript from the command line.
+            Enter sass -i on the command line, and then enter the SassScript you want to test to see the output:</p>
+          <p data-anchor-id="9tvq">You can easily try SassScript using the Interactive Shell. <br>
+            To run the startup shell, just use the <code>-i</code>option's sass command line (note: type in the command
+            line <code>sass -i</code>). <br>
+            At the prompt, enter any valid SassScript expression, which will evaluate and print your results elsewhere:
+          </p>
+          <pre data-anchor-id="g3w9"><code class="language-sass">$ sass -i
+  &gt;&gt; "Hello, Sassy World!"
+  "Hello, Sassy World!"
+  &gt;&gt; 1px + 1px + 1px
+  3px
+  &gt;&gt; #777 + #777
+  #eeeeee
+  &gt;&gt; #777 + #888
+  white
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="variables_" data-anchor-id="xk6r">Variables: <code>$</code>(the <code>$</code>Variables: )</h3>
+          <p data-anchor-id="7z8v">The most straightforward way to use SassScript is to use variables. Variables start
+            with a dollar sign, and assignments are like setting CSS properties:</p>
+          <pre data-anchor-id="huls"><code class="language-scss">$width: 5em;
+  </code></pre>
+          <p data-anchor-id="rsgo">You can reference them in attributes:</p>
+          <pre data-anchor-id="4i9c"><code class="language-scss">#main {
+    width: $width;
+  }
+  </code></pre>
+          <p data-anchor-id="gl6b">Variables are available only within the scope of the selector nesting level it
+            defines (note: can be understood as block-level scope). Variables that are not defined inside any nested
+            selectors can be used anywhere (note: can be understood as global variables). When you define a variable,
+            you can put a <code>!global</code>flag behind it . In this case, the variable is visible everywhere (note:
+            it can be understood as a global variable). E.g:</p>
+          <pre data-anchor-id="imgx"><code class="language-scss">#main {
+    $width: 5em !global;
+        width: $width;
+  }
+  
+  #sidebar {
+    width: $width;
+  }
+  </code></pre>
+          <p data-anchor-id="kwlq">Compiles to:</p>
+          <pre data-anchor-id="73dt"><code class="language-css">#main {
+    width: 5em;
+  }
+  
+  #sidebar {
+    width: 5em;
+  }
+  </code></pre>
+          <p data-anchor-id="i2nv">For historical reasons, variable names (and all other Sass identifiers) are
+            interchangeable with hyphens (note:) <code>-</code>and underscores (note:) <code>_</code>. For example, if
+            you define a named <code>$main-width</code>you can use to <code>$main_width</code>access it, and vice versa.
+          </p>
+          <div class="md-section-divider"></div>
+          <h3 id="data-types" data-anchor-id="mp1j">Data Types</h3>
+          <p data-anchor-id="ffdw">SassScript supports 7 main data types:</p>
+          <ul data-anchor-id="1lfy">
+            <li>Numbers (e.g.: <code>1.2</code>, <code>13</code>, <code>10px</code>)</li>
+            <li>Text strings, quoted strings and string without quotation marks (e.g.: <code>"foo"</code>,
+              <code>'bar'</code>, <code>baz</code>)</li>
+            <li>Color (e.g.,: <code>blue</code>, <code>#04a3f9</code>, <code>rgba(255, 0, 0, 0.5)</code>)</li>
+            <li>Boolean value (for example: <code>true</code>, <code>false</code>)</li>
+            <li>Empty (for example: <code>null</code>)</li>
+            <li>Value list (List), or comma-separated by spaces (eg: <code>1.5em 1em 0 2em</code>,
+              <code>Helvetica, Arial, sans-serif</code>)</li>
+            <li>maps, a mapping from one value to another (for example: <code>(key1: value1, key2: value2)</code>)</li>
+          </ul>
+          <p data-anchor-id="1vcc">SassScript also supports CSS property values of all other types, such as Unicode
+            character set, or <code>!important</code>a statement. However, these types of attribute values &#8203;&#8203;are not
+            treated specially and are always treated as unquoted strings.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="sass-script-strings" data-anchor-id="q2fp">Strings</h4>
+          <p data-anchor-id="hm1n">CSS specifies two types of strings: quoted strings (note: including double quotes and
+            single quotes), such as <code>"Lucida Grande"</code>or <code>'http://sass-lang.com'</code>, and unquoted
+            strings, such as <code>sans-serif</code>or <code>bold</code>. SassScript recognizes both types, and in
+            general, the type of strings used in Sass documents is not changed in the compiled output CSS file.</p>
+          <p data-anchor-id="4f1e">With one exception, when using <a href="#interpolation_"><code>#{}</code>interpolation</a> , quoted strings will be compiled into unquoted
+            strings, which is mainly for convenience, such as selector names in <a href="#mixins">mixins</a> . E.g:</p>
+          <pre data-anchor-id="3wkp"><code class="language-scss">@mixin firefox-message($selector) {
+        body.firefox #{$selector}:before {
+      content: "Hi, Firefox users!";
+    }
+  }
+  
+  @include firefox-message(".header");
+  </code></pre>
+          <p data-anchor-id="detn">Compiles to:</p>
+          <pre data-anchor-id="psky"><code class="language-css">body.firefox .header:before {
+    content: "Hi, Firefox users!"; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="lists" data-anchor-id="iwj9">Lists</h4>
+          <p data-anchor-id="qolu">List (lists) refers to how CSS Sass said in a statement, similar to
+            <code>margin: 10px 15px 0 0</code>or <code>font-face: Helvetica, Arial, sans-serif</code>such values, a list
+            of just a bunch of other values, whether or comma separated by a space. In fact, independent values &#8203;&#8203;are
+            also treated as lists: a list containing only one value.</p>
+          <p data-anchor-id="zddp">The list itself doesn't have much functionality, but Sass list functions give the
+            array more new features: the nth function can directly access an item in the array; the join function can
+            connect multiple arrays together; the append function can be added to the array The new value; the @each
+            directive is able to iterate through each item in the array.</p>
+          <p data-anchor-id="za3k">The list itself doesn't have much functionality, but SassScript list functions make
+            them very useful. <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#nth-instance_method" target="_blank"><code>nth</code>Functions</a> can directly access an item in a list; <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#join-instance_method" target="_blank"><code>join</code>functions</a> can splice multiple lists together; <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#append-instance_method" target="_blank"><code>append</code>functions</a> can add an item to a list; <a href="#each-directive"><code>@each</code>instructions</a> can add styles to each item in the list.</p>
+          <p data-anchor-id="9xkj">In addition to simple values, lists can contain other lists. For example, it
+            <code>1px 2px, 5px 6px</code>contains two items , <code>1px 2px</code>list and <code>5px 6px</code>list. If
+            the inner and outer lists use the same delimiter, you need to use parentheses to enclose the inner list to
+            specify where the inner categories begin and end. <br>
+            For example, <code>(1px 2px) (5px 6px)</code>it is also a <code>1px 2px</code>list containing
+            <code>5px 6px</code>two items, list and list. The difference is that the outer layer of the list is
+            separated by spaces. The outer layer of the previous list is separated by commas.</p>
+          <p data-anchor-id="9klo">When the list is compiled into CSS, Sass does not add any parentheses because CSS
+            does not recognize them. This means that, <code>(1px 2px) (5px 6px)</code>and
+            <code>1px 2px 5px 6px</code>looks exactly the same as in the CSS file compiled in. However, they are
+            different in Sass: the first is a list with two lists, and the second is a list with four members.</p>
+          <p data-anchor-id="igi4">Use () to represent an empty array containing no values &#8203;&#8203;(also considered an empty
+            map after Sass 3.3). Empty arrays cannot be compiled directly into CSS. For example, compiling font-family:
+            () Sass will report an error. If the array contains empty arrays or empty values, it will be cleared at
+            compile time, such as 1px 2px () 3px or 1px 2px null 3px.</p>
+          <p data-anchor-id="u7xk">Lists can also have no items. These lists can be <code>()</code>expressed (also a
+            empty <a href="#maps">the Map</a> ). <br>
+            They cannot be output directly to CSS; if you try to do so, for example <code>font-family: ()</code>, Sass
+            will report an error. If the list contains a null value or empty list, for example
+            <code>1px 2px () 3px</code>, or <code>1px 2px null 3px</code>, before included in a list compiled CSS, empty
+            list and a null value will be deleted.</p>
+          <p data-anchor-id="annc">A comma-separated list can retain trailing commas. This is particularly useful
+            because it can represent a single element list. <br>
+            For example, <code>(1,)</code>is represented as containing only <code>1</code>a list, but
+            <code>(1 2 3,)</code>this representation contains a list, the list also contains a space-delimited
+            <code>1</code>, <code>2</code>and <code>3</code>lists.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="maps" data-anchor-id="2qhh">Maps</h4>
+          <p data-anchor-id="mten">Maps represent a collection of key and value pairs, where keys are used to find
+            values. They can easily collect values &#8203;&#8203;into named groups and can access these groups dynamically. You
+            can't find similar values &#8203;&#8203;in CSS, although their syntax is similar to media query expressions:</p>
+          <pre data-anchor-id="bxl6"><code class="language-scss">$map: (key1: value1, key2: value2, key3: value3);
+  </code></pre>
+          <p data-anchor-id="7muu">Unlike Lists, Maps must always be enclosed in parentheses and must be separated by
+            commas. The keys and values &#8203;&#8203;in Maps can be arbitrary SassScript objects. A Maps may have only one value
+            associated with a given key (although the value can be a list). A given value may be associated with many
+            keys.</p>
+          <p data-anchor-id="dup5">Similar to Lists, Maps uses <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions" target="_blank">SassScript functions for</a> its main operations . <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#map_get-instance_method" target="_blank"><code>map-get</code>Functions are</a> used to find the values &#8203;&#8203;in the map. <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#map_merge-instance_method" target="_blank"><code>map-merge</code>Functions are</a> used to add values &#8203;&#8203;to the map. <a href="#each-multi-assign"><code>@each</code>Instructions</a> can be used to style each key-value pair in
+            the map. The order of key-value pairs in a map is always the same as when the map was created.</p>
+          <p data-anchor-id="1e2x">Maps can also be used for anything that Lists can do. When used in a list function,
+            map is treated as a list of key-value pairs. For example, <code>(key1: value1, key2: value2)</code>when used
+            in a list function, it is treated as a nested list <code>key1 value1, key2 value2</code>. Lists cannot be
+            considered maps, except for empty lists. <code>()</code>Represents a map with no key / value pairs, and can
+            also be considered a list with no elements.</p>
+          <p data-anchor-id="5tyv">Note that map keys can be of any Sass data type (or even another map), and the syntax
+            for declaring maps is allowed to be any SassScript expression. This expression will be evaluated as a value
+            to determine the key ( keys).</p>
+          <p data-anchor-id="x97o">Maps cannot be converted to pure CSS. Passing a CSS function as the value or
+            parameter of a variable will cause an error. Use <code>inspect($value)</code>functions to produce output
+            strings, which is useful for debugging maps.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="colors" data-anchor-id="tc83">Colors</h4>
+          <p data-anchor-id="k4s9">Any CSS color expression returns a SassScript color value. This includes a <a href="https://github.com/nex3/sass/blob/stable/lib/sass/script/value/color.rb#L28-L180" target="_blank">large number of named colors</a> , these name strings are indistinguishable without
+            quotation marks.</p>
+          <p data-anchor-id="jb9i">In compressed output mode, Sass will output short CSS color representations. For
+            example, in the compressed mode <code>#FF0000</code>will be output <code>red</code>, but
+            <code>blanchedalmond</code>the output <code>#FFEBCD</code>.</p>
+          <p data-anchor-id="bkb5">A common problem a user encounters is that Sass likes to output the same format as
+            the named colors in other output modes. When compressed, the colors interpolated to the selector become
+            invalid syntax. To avoid this, always name the colors if they are intended to be used in the selection
+            construction.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="operations" data-anchor-id="zig5">Operations</h3>
+          <p data-anchor-id="3f4c">All data types support equality operations ( <code>==</code>sum <code>!=</code>). In
+            addition, each type has its own special arithmetic.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="number-operations" data-anchor-id="9pu0">Number Operations</h4>
+          <p data-anchor-id="l9sp">SassScript supports arithmetic operations on numbers (addition <code>+</code>,
+            subtraction <code>-</code>, multiplication <code>*</code>, division, <code>/</code>and modulus
+            <code>%</code>). Sass mathematical functions retain units during arithmetic operations. This means that,
+            just like in real life, you cannot use different unit numbers for arithmetic operations (such as adding a
+            <code>px</code>sum <code>em</code>unit after the number), and multiplying two numbers with the same unit
+            will produce a unit square ( <code>10px * 10px == 100px * px</code>). <strong>Be aware</strong> that
+            <code>px * px</code>CSS units are invalid, and Sass will throw an error because you are trying to use
+            invalid units in CSS.</p>
+          <p data-anchor-id="uwgx">Supports relational operators ( <code>&lt;</code>, <code>&gt;</code>,
+            <code>&lt;=</code>, <code>&gt;=</code>), and supports all types of the equality operator ( <code>==</code>,
+            <code>!=</code>).</p>
+          <div class="md-section-divider"></div>
+          <h5 id="division-and-slash" data-anchor-id="p4q4">Division and <code>/</code>(Division and <code>/</code>)
+          </h5>
+          <p data-anchor-id="z9mb">CSS allows <code>/</code>occurs manner between the property value as a digital
+            divider (Note: e.g. font attributes <code>p.ex2{font:italic bold 12px/20px arial,sans-serif;}</code>). Since
+            SassScript is an extension of CSS attribute syntax, so it must support this, while also allowing
+            <code>/</code>for the division. This means that, by default, if the two numbers in the SassScript
+            <code>/</code>, will appear the same way in the separate return of the CSS.</p>
+          <p data-anchor-id="98zz">However, there are <code>/</code>three cases that will resolve to division. These
+            cover most cases of division. they are:</p>
+          <ol data-anchor-id="izq7">
+            <li>If the value, or any part of the value, is stored in a variable or returned by a function.</li>
+            <li>If the value is enclosed in parentheses, unless those brackets are outside a list and the value is
+              inside the brackets.</li>
+            <li>If the value is used as part of another arithmetic expression.</li>
+          </ol>
+          <p data-anchor-id="y3wx">E.g:</p>
+          <pre data-anchor-id="bcfk"><code class="language-scss">p {
+    font: 10px/8px;             // &#21407;&#29983;&#30340;CSS&#65292;&#19981;&#20316;&#20026;&#38500;&#27861;
+    $width: 1000px;
+        width: $width/2;            // &#20351;&#29992;&#20102;&#21464;&#37327;, &#20316;&#20026;&#38500;&#27861;
+    width: round(1.5)/2;        // &#20351;&#29992;&#20102;&#20989;&#25968;, &#20316;&#20026;&#38500;&#27861;
+    height: (500px/2);          // &#20351;&#29992;&#20102;&#25324;&#21495;, &#20316;&#20026;&#38500;&#27861;
+    margin-left: 5px + 8px/2px; // &#20351;&#29992;&#20102; +, &#20316;&#20026;&#38500;&#27861;
+    font: (italic bold 10px/8px); // &#22312;&#19968;&#20010;&#21015;&#34920;&#65288;list&#65289;&#20013;&#65292;&#25324;&#21495;&#21487;&#20197;&#34987;&#24573;&#30053;&#12290;
+  }
+  </code></pre>
+          <p data-anchor-id="901i">Compiles to:</p>
+          <pre data-anchor-id="ssz4"><code class="language-css">p {
+    font: 10px/8px;
+    width: 500px;
+    height: 250px;
+    margin-left: 9px; }
+  </code></pre>
+          <p data-anchor-id="0j33">If you want pure CSS to <code>/</code>be used with variables (note: <code>/</code>not
+            used as division), you can <code>#{}</code>insert them using . E.g:</p>
+          <pre data-anchor-id="y5q9"><code class="language-scss">p {
+    $font-size: 12px;
+        $line-height: 30px;
+    font: #{$font-size}/#{$line-height};
+  }
+  </code></pre>
+          <p data-anchor-id="6nnd">Compiles to:</p>
+          <pre data-anchor-id="uyk0"><code class="language-css">p {
+    font: 12px/30px; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h5 id="subtraction" data-anchor-id="gh5h">Subtraction, negative, and <code>-</code>(Subtraction, a Numbers
+            Negative, and <code>-</code>)</h5>
+          <p data-anchor-id="651y">And in the Sass CSS <code>-</code>has many different meanings. It can be a
+            subtraction operator (such as in <code>5px - 3px</code>), a negative number (such as in <code>-3px</code>),
+            a unary negative operator (such as in <code>-$var</code>), or a part of an identifier (such as in
+            <code>font-weight</code>). Most of the time, we can easily tell <code>-</code>what exactly it represents,
+            but there are some tricky treats. As a general rule, you are safest to use <code>-</code>:</p>
+          <ul data-anchor-id="pbri">
+            <li>Subtraction, you always <code>-</code>leave a space on both sides.</li>
+            <li>When representing a negative number or unary negative operation, <code>-</code>include a space in front
+              and no spaces after.</li>
+            <li>If in a space-separated list, you can enclose unary negative operations in parentheses, such as in
+              <code>10px (-$var)</code>.</li>
+          </ul>
+          <p data-anchor-id="cra8"><code>-</code> The different meanings of the precedence are as follows:</p>
+          <ol data-anchor-id="ioqs">
+            <li>
+              <p><code>-</code>As part of the identifier. This means <code>a-1</code>an unquoted string whose value is
+                <code>"a-1"</code>. The only exception is units; Sass generally allows any valid identifier to be used
+                as an identifier, but identifiers cannot begin with a number or a hyphen. This means that
+                <code>5px-3px</code>and <code>5px - 3px</code>are the same.</p>
+            </li>
+            <li>
+              <p><code>-</code>Between two numbers without spaces. This indicates subtraction, so <code>1-2</code>and
+                <code>1 - 2</code>are the same.</p>
+            </li>
+            <li>
+              <p>Literal numbers to <code>-</code>begin with. This indicates a negative number, it <code>1 -2</code>is a
+                contained <code>1</code>and <code>-2</code>the list (list).</p>
+            </li>
+            <li>
+              <p><code>-</code>Between two numbers, with or without spaces. This indicates a subtraction, so
+                <code>1 -$var</code>and <code>1 - $var</code>are the same.</p>
+            </li>
+            <li>
+              <p><code>-</code>Before the value. This indicates a unary negative operator; the operation requires a
+                number and returns its negative value.</p>
+            </li>
+          </ol>
+          <div class="md-section-divider"></div>
+          <h4 id="color-operations" data-anchor-id="qr7m">Color operations</h4>
+          <p data-anchor-id="wv7e">All arithmetic operations support color values. The calculation of color values &#8203;&#8203;is
+            calculated in segments, that is, the component values &#8203;&#8203;of red, green, and blue are calculated in order.
+            E.g:</p>
+          <pre data-anchor-id="vtnw"><code class="language-scss">p {
+    color: #010203 + #040506;
+  }
+  </code></pre>
+          <p data-anchor-id="7934">Computing <code>01 + 04 = 05</code>, <code>02 + 05 = 07</code>and
+            <code>03 + 06 = 09</code>is compiled as follows:</p>
+          <pre data-anchor-id="fmwk"><code class="language-css">p {
+    color: #050709; }
+  </code></pre>
+          <p data-anchor-id="u41g"><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">Color functions</a> are often more useful than trying color arithmetic to achieve the same
+            effect.</p>
+          <p data-anchor-id="1gmp">Arithmetic operations between numbers and color values &#8203;&#8203;are also segmented. E.g:</p>
+          <pre data-anchor-id="2nls"><code class="language-scss">p {
+    color: #010203 * 2;
+  }
+  </code></pre>
+          <p data-anchor-id="u8gg">Computing <code>01 * 2 = 02</code>, <code>02 * 2 = 04</code>and
+            <code>03 * 2 = 06</code>is compiled as follows:</p>
+          <pre data-anchor-id="ppmp"><code class="language-css">p {
+    color: #020406; }
+  </code></pre>
+          <p data-anchor-id="vmsb">Note that colors containing alpha channels (those created by <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#rgba-instance_method" target="_blank">rgba</a> or <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#hsla-instance_method" target="_blank">hsla</a> functions) must have the same alpha value in order to perform color calculations.
+            This arithmetic does not affect the alpha value. E.g:</p>
+          <pre data-anchor-id="7thc"><code class="language-scss">p {
+    color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
+  }
+  </code></pre>
+          <p data-anchor-id="rqxx">Compiles to:</p>
+          <pre data-anchor-id="twy6"><code class="language-css">p {
+    color: rgba(255, 255, 0, 0.75); }
+  </code></pre>
+          <p data-anchor-id="51wh">The alpha channel of the color can be adjusted using the <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#opacify-instance_method" target="_blank">opacify</a> and <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#transparentize-instance_method" target="_blank">transparentize</a> functions. E.g:</p>
+          <pre data-anchor-id="gu5a"><code class="language-scss">$translucent-red: rgba(255, 0, 0, 0.5);
+      p {
+        color: opacify($translucent-red, 0.3);
+        background-color: transparentize($translucent-red, 0.25);
+  }
+  </code></pre>
+          <p data-anchor-id="sf4t">Compiles to:</p>
+          <pre data-anchor-id="fnc0"><code class="language-css">p {
+    color: rgba(255, 0, 0, 0.8);
+    background-color: rgba(255, 0, 0, 0.25); }
+  </code></pre>
+          <p data-anchor-id="5ion">The IE browser's filters require that all colors include an alpha layer, and the
+            format must be fixed #AABBCCDD. Use the <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#ie_hex_str-instance_method" target="_blank">ie_hex_str</a> function to easily convert colors to the format required by IE filters.
+            E.g:</p>
+          <pre data-anchor-id="e4zn"><code class="language-scss">$translucent-red: rgba(255, 0, 0, 0.5);
+      $green: #00ff00;
+  div {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr='#{ie-hex-str($green)}', endColorstr='#{ie-hex-str($translucent-red)}');
+  }
+  </code></pre>
+          <p data-anchor-id="rfv4">Compiles to:</p>
+          <pre data-anchor-id="fyx1"><code class="language-css">div {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr=#FF00FF00, endColorstr=#80FF0000);
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="string-operations" data-anchor-id="ojs8">String operations</h4>
+          <p data-anchor-id="mnut"><code>+</code> Operations can be used to concatenate strings:</p>
+          <pre data-anchor-id="2zhc"><code class="language-scss">p {
+    cursor: e + -resize;
+  }
+  </code></pre>
+          <p data-anchor-id="5wjv">Compiles to:</p>
+          <pre data-anchor-id="lxiy"><code class="language-css">p {
+    cursor: e-resize; }
+  </code></pre>
+          <p data-anchor-id="ynkc">Please note that if the string is added to the quoted string without quotation marks
+            in (that is, a quoted string in <code>+</code>the left side), <br>
+            then the results returned is a quoted string. Similarly, if one does not add quoted string to the quoted
+            string (string without quotation marks in <code>+</code>the left) the result returned is not a quoted string
+            belt. E.g:</p>
+          <pre data-anchor-id="rif1"><code class="language-scss">p:before {
+    content: "Foo " + Bar;
+    font-family: sans- + "serif";
+  }
+  </code></pre>
+          <p data-anchor-id="8fk7">Compiles to:</p>
+          <pre data-anchor-id="zjlx"><code class="language-css">p:before {
+    content: "Foo Bar";
+    font-family: sans-serif; }
+  </code></pre>
+          <p data-anchor-id="swe2">By default, when expressions are used in conjunction with other values, spaces are
+            used as connectors:</p>
+          <pre data-anchor-id="sfgb" class="language-scss"><code>p {
+    margin: 3px + 4px auto;
+  }
+  </code></pre>
+          <p data-anchor-id="svrw">Compiles to:</p>
+          <pre data-anchor-id="vke9"><code class="language-css">p {
+    margin: 7px auto; }
+  </code></pre>
+          <p data-anchor-id="yw2k">In text strings, # {}-style interpolation can be used to place dynamic values &#8203;&#8203;in
+            strings:</p>
+          <pre data-anchor-id="3qqo"><code class="language-scss">p:before {
+    content: "I ate #{5 + 10} pies!";
+  }
+  </code></pre>
+          <p data-anchor-id="z523">Compiles to:</p>
+          <pre data-anchor-id="lmw7"><code class="language-css">p:before {
+    content: "I ate 15 pies!"; }
+  </code></pre>
+          <p data-anchor-id="7rru">Null values &#8203;&#8203;are treated as empty strings during string interpolation:</p>
+          <pre data-anchor-id="szlp"><code class="language-scss">$value: null;
+      p:before {
+        content: "I ate #{$value} pies!";
+  }
+  </code></pre>
+          <p data-anchor-id="k1pn">Compiles to:</p>
+          <pre data-anchor-id="odjc"><code class="language-css">p:before {
+    content: "I ate  pies!"; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="boolean-operations" data-anchor-id="ziqa">Boolean operations</h4>
+          <p data-anchor-id="l669">SassScript support Boolean values <code>and</code>, <code>or</code>and
+            <code>not</code>operations.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="list-operations" data-anchor-id="4unr">List operations</h4>
+          <p data-anchor-id="rn0e">Arrays do not support any special operations and can only be controlled using the <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#list-functions" target="_blank">list
+              function</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="parentheses" data-anchor-id="j294">Parentheses</h3>
+          <p data-anchor-id="9k5w">Parentheses can be used to influence the order of operations (note: priority):</p>
+          <pre data-anchor-id="6a1b"><code class="language-scss">p {
+    width: 1em + (2em * 3);
+  }
+  </code></pre>
+          <p data-anchor-id="yk6u">Compiles to:</p>
+          <pre data-anchor-id="peha"><code class="language-css">p {
+    width: 7em; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="functions" data-anchor-id="uwyu">Functions</h3>
+          <p data-anchor-id="i6gn">SassScript defines some useful functions that can be called like normal CSS function
+            syntax:</p>
+          <pre data-anchor-id="2zlu"><code class="language-scss">p {
+    color: hsl(0, 100%, 50%);
+  }
+  </code></pre>
+          <p data-anchor-id="oz6v">Compiles to:</p>
+          <pre data-anchor-id="otgs"><code class="language-css">p {
+    color: #ff0000; }
+  </code></pre>
+          <p data-anchor-id="6480">For a complete list of available functions, see <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">this page</a> .</p>
+          <div class="md-section-divider"></div>
+          <h4 id="keyword-arguments" data-anchor-id="qg60">Keyword Arguments</h4>
+          <p data-anchor-id="33gw">The Sass function allows calls to be specified with explicit keyword arguments. The
+            above example can also be rewritten as:</p>
+          <pre data-anchor-id="51tm"><code class="language-scss">p {
+    color: hsl($hue: 0, $saturation: 100%, $lightness: 50%);
+  }
+  </code></pre>
+          <p data-anchor-id="thk9">Although not concise, it can make Sass code easier to read. Keyword parameters make
+            the function have a more flexible interface, even if there are many parameters, it will not make it
+            difficult to use.</p>
+          <p data-anchor-id="fxqh">Named arguments can be passed in any order, and parameters with default values &#8203;&#8203;can
+            be omitted. Because named parameters are also variable names, underscores and dashes can be used
+            interchangeably.</p>
+          <p data-anchor-id="oa8r">For a complete list of Sass functions and their parameter names, and how to define
+            your own functions in Ruby, see <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html" target="_blank">Sass :: Script :: Functions</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="interpolation_" data-anchor-id="prko">Interpolation: <code>#{}&#65288;</code>the
+            <code>#{}</code>Interpolation: )</h3>
+          <p data-anchor-id="ynhu">You can also <code>#{}</code>use SassScript variable and attribute names in selectors
+            interpolation syntax:</p>
+          <pre data-anchor-id="8c2q"><code class="language-scss">$name: foo;
+      $attr: border;
+  p.#{$name} {
+        #{$attr}-color: blue;
+  }
+  </code></pre>
+          <p data-anchor-id="ffna">Compiles to:</p>
+          <pre data-anchor-id="tpiy"><code class="language-css">p.foo {
+    border-color: blue; }
+  </code></pre>
+          <p data-anchor-id="w1vn">It can also <code>#{}</code>insert SassScript into attribute values using
+            interpolation statements. In most cases, this may not be as easy to make direct use of variables, but using
+            <code>#{}</code>means near its operators will be treated as plain CSS (Note: to avoid all kinds of
+            operations). E.g:</p>
+          <pre data-anchor-id="fj9u"><code class="language-scss">p {
+    $font-size: 12px;
+        $line-height: 30px;
+    font: #{$font-size}/#{$line-height};
+  }
+  </code></pre>
+          <p data-anchor-id="7y0x">Compiles to:</p>
+          <pre data-anchor-id="026h"><code class="language-css">p {
+    font: 12px/30px; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="parent-script" data-anchor-id="3ebr">SassScript <code>&amp;</code>( <code>&amp;</code>in SassScript)
+          </h3>
+          <p data-anchor-id="sxzj">Just like when it is used in a <a href="#parent-selector">selector</a> , SassScript
+            <code>&amp;</code>points to the current parent selector. Below is a comma-separated list with a
+            space-separated list. E.g:</p>
+          <pre data-anchor-id="qfga"><code class="language-scss">.foo.bar .baz.bang, .bip.qux {
+    $selector: &amp;;
+  }
+  </code></pre>
+          <p data-anchor-id="gjxr"><code>$selector</code>The value is now
+            <code>((".foo.bar" ".baz.bang"), ".bip.qux")</code>. This hybrid selector is quoted here to indicate that
+            they are strings, but in reality they will be unquoted. Even if the selector does not contain commas or
+            spaces, <code>&amp;</code>there will always be two levels of nesting, so it guarantees access consistency.
+          </p>
+          <p data-anchor-id="uur1">If there is no parent selector, <code>&amp;</code>the value will be empty. This means
+            you can use it in a mixin to detect if the parent selection exists:</p>
+          <pre data-anchor-id="ayve"><code class="language-scss">@mixin does-parent-exist {
+    @if &amp; {
+      &amp;:hover {
+        color: red;
+      }
+    } @else {
+      a {
+        color: red;
+      }
+    }
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="variable-defaults" data-anchor-id="tn54">Variable Default: <code>!default</code>(Variable
+            <code>!default</code>Defaults: )</h3>
+          <p data-anchor-id="0wj2">If the value assigned to a variable is followed by a <code>!default</code>flag, this
+            means that if the variable has already been assigned, it will not be reassigned, but if it has not already
+            been assigned, then it will be assigned a new given value.</p>
+          <p data-anchor-id="1igr">E.g:</p>
+          <pre data-anchor-id="lya9"><code class="language-scss">$content: "First content";
+      $content: "Second content?" !default;
+  $new_content: "First time reference" !default;
+  
+  #main {
+    content: $content;
+        new-content: $new_content;
+  }
+  </code></pre>
+          <p data-anchor-id="hf0v">Compiles to:</p>
+          <pre data-anchor-id="sm6p"><code class="language-css">#main {
+    content: "First content";
+    new-content: "First time reference"; }
+  </code></pre>
+          <p data-anchor-id="9j63">! By default, when assigned, if the variable is <code>null</code>value, it will be
+            treated as unassigned (Note: The value of $ content so the following "Non-null content"):</p>
+          <pre data-anchor-id="t0kj"><code class="language-scss">$content: null;
+      $content: "Non-null content" !default;
+  
+  #main {
+    content: $content;
+  }
+  </code></pre>
+          <p data-anchor-id="37vv">Compiles to:</p>
+          <pre data-anchor-id="wafo"><code class="language-css">#main {
+    content: "Non-null content"; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h2 id="directives" data-anchor-id="dm1v"><code>@</code>Rules <code>@</code>and Directives</h2>
+          <p data-anchor-id="1hhx">Sass CSS3 support all the <code>@</code>rules, and some other specific Sass known
+            "instruction." These Sass has a corresponding effect, for more information, please see the <a href="#control_directives">control command (control directives)</a> and <a href="#mixins">mixing
+              instructions (mixin directives)</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="import" data-anchor-id="5r3g"><code>@import</code></h3>
+          <p data-anchor-id="epqh">Sass extends CSS <code>@import</code>rules to allow it to import SCSS or Sass files.
+            All imported SCSS or Sass files will be merged together into the same CSS file. In addition, any variables
+            or <a href="#mixins">mixins</a> defined in the imported file can be included in the main file (Note: The
+            value of the main file is the file that imports other files, that is, the B file is imported into the A
+            file. Is the A file).</p>
+          <p data-anchor-id="d65x">Sass will look for other Sass files in the current directory and the Rack, Rails,
+            Merb directories. Additional search directories can be specified using <a href="#load_paths-option"><code>:load_paths</code></a>options or options on the command line
+            <code>--load-path</code>.</p>
+          <p data-anchor-id="bafg">Normally, @import looks for Sass files and imports them, but in the following cases
+            @import is just a normal CSS statement and does not import any Sass files.</p>
+          <p data-anchor-id="0zvm"><code>@import</code>Need a file name to import. By default, it looks for a Sass file
+            to import directly, but in the following cases, it is only used as a regular CSS @import rule statement, and
+            no Sass file is imported.</p>
+          <ul data-anchor-id="3xzs">
+            <li>If the file extension is <code>.css</code>.</li>
+            <li>If the file name to <code>http://</code>begin.</li>
+            <li>If the file name is <code>url()</code>.</li>
+            <li>If <code>@import</code>it contains any media queries.</li>
+          </ul>
+          <p data-anchor-id="frac">If none of the above conditions are met and the extension is <code>.scss</code>or
+            <code>.sass</code>, then the Sass or SCSS file will be imported. If no extension is specified, Sass will try
+            to find the file with the <code>.scss</code>or <code>.sass</code>extension and import it.</p>
+          <p data-anchor-id="oz56">E.g,</p>
+          <pre data-anchor-id="0l1h"><code class="language-scss">@import "foo.scss";
+  </code></pre>
+          <p data-anchor-id="txw6">or</p>
+          <pre data-anchor-id="dd46"><code class="language-scss">@import "foo";
+  </code></pre>
+          <p data-anchor-id="kw57">Both lines of code can import the file <code>foo.scss</code>, and</p>
+          <pre data-anchor-id="rjpz"><code class="language-scss">@import "foo.css";
+  @import "foo" screen;
+  @import "http://foo.com/bar";
+  @import url(foo);
+  </code></pre>
+          <p data-anchor-id="4iql">Compile all to</p>
+          <pre data-anchor-id="a0oz"><code class="language-css">@import "foo.css";
+  @import "foo" screen;
+  @import "http://foo.com/bar";
+  @import url(foo);
+  </code></pre>
+          <p data-anchor-id="kggm">Sass in a support <code>@import</code>import multiple files at the same time rules.
+            E.g:</p>
+          <pre data-anchor-id="3sbo"><code class="language-scss">@import "rounded-corners", "text-shadow";
+  </code></pre>
+          <p data-anchor-id="dnkt">Both files <code>rounded-corners</code>and are imported <code>text-shadow</code>.</p>
+          <p data-anchor-id="iqz3">Import rules may contain <code>#{}</code>interpolation, but there are certain
+            restrictions. Sass files cannot be dynamically imported through variables; <code>#{}</code>interpolation is
+            only applicable to CSS import rules. Therefore, it applies only to <code>url()</code>imports.</p>
+          <p data-anchor-id="neja">E.g:</p>
+          <pre data-anchor-id="fgv9"><code class="language-scss">$family: unquote("Droid+Sans");
+      @import url("http://fonts.googleapis.com/css?family=#{$family}");
+  </code></pre>
+          <p data-anchor-id="8kvf">Will compile to</p>
+          <pre data-anchor-id="strx"><code class="language-css">@import url("http://fonts.googleapis.com/css?family=Droid+Sans");
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="partials" data-anchor-id="3sd8">Partials</h4>
+          <p data-anchor-id="15tz">If you have an SCSS or Sass file to import but don't want to compile it to a CSS
+            file, you can add an underscore at the beginning of the file name. This will tell Sass not to compile it to
+            a normal CSS file. However, there is no need to add an underscore in the import statement.</p>
+          <p data-anchor-id="8yys">For example, you might have a name for the <code>_colors.scss</code>file, but will
+            not be compiled into a <code>_colors.css</code>document. You can do</p>
+          <pre data-anchor-id="2ex5"><code class="language-scss">@import "colors";
+  </code></pre>
+          <p data-anchor-id="kbbd">In this way, it <code>_colors.scss</code>will be imported.</p>
+          <p data-anchor-id="ivmh">Note Do not underlined and not underlined the same file is placed in the same
+            directory, for example, <code>_colors.scss</code>and <code>colors.scss</code>can not exist simultaneously in
+            the same directory. Otherwise, underlined files will be ignored.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="nested-import" data-anchor-id="fnid">Nesting <code>@import</code>(Nested <code>@import</code>)</h4>
+          <p data-anchor-id="jjhk">Although in most cases it is generally used at the top level of the document (note:
+            the outermost level, not inside nested rules) <code>@import</code>, you can also <code>@media</code>include
+            <code>@import</code>statements in CSS rules and rules . Like a grassroots <code>@import</code>, where it
+            will contain <code>@import</code>the contents of the imported file. However, this rule can only be
+            introduced to prevent nesting in the original <code>@import</code>place.</p>
+          <p data-anchor-id="1h94">For example, if <code>example.scss</code>comprising</p>
+          <pre data-anchor-id="0fga"><code class="language-scss">.example {
+    color: red;
+  }
+  </code></pre>
+          <p data-anchor-id="o0a7">Then (Note: introducing into <code>#main</code>the style)</p>
+          <pre data-anchor-id="fx40"><code class="language-scss">#main {
+    @import "example";
+  }
+  </code></pre>
+          <p data-anchor-id="8rte">Note: This import is equivalent to:</p>
+          <pre data-anchor-id="krzj"><code class="language-scss">#main {
+    .example {
+        color: red;
+      }
+  }
+  </code></pre>
+          <p data-anchor-id="2jkk">Will be compiled as</p>
+          <pre data-anchor-id="51s0"><code class="language-css">#main .example {
+    color: red;
+  }
+  </code></pre>
+          <p data-anchor-id="f1cd">This directive is only allowed at the top level of the document (Note: the outermost
+            level, not in the nesting rules), like <code>@mixin</code>or <code>@charset</code>in the file, it is not
+            allowed to be <code>@import</code>imported into a nesting context.</p>
+          <p data-anchor-id="tq0f">Nesting in mixins or control directives is not allowed <code>@import</code>.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="media" data-anchor-id="u1iu"><code>@media</code></h3>
+          <p data-anchor-id="uzks">Sass in <code>@media</code>behavioral instructions and pure CSS in the same, but
+            added a bit of extra features: they can be nested CSS rules. If a <code>@media</code>directive appears in a
+            CSS rule, it will be bubbled to the top of the style sheet and contains all the selectors in the rule. This
+            makes it easy to add specific media styles without having to reuse selectors or disrupt the style sheet
+            writing flow. E.g:</p>
+          <pre data-anchor-id="ztjk"><code class="language-scss">.sidebar {
+    width: 300px;
+    @media screen and (orientation: landscape) {
+      width: 500px;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="rqsm">Compiles to:</p>
+          <pre data-anchor-id="illn"><code class="language-css">.sidebar {
+    width: 300px; }
+    @media screen and (orientation: landscape) {
+      .sidebar {
+        width: 500px; } }
+  </code></pre>
+          <p data-anchor-id="74ty"><code>@media</code>Queries can also be nested within each other. These queries
+            (queries) at compile time, will use the <code>and</code>operating symbol combination. E.g:</p>
+          <pre data-anchor-id="nqqm"><code class="language-scss">@media screen {
+    .sidebar {
+      @media (orientation: landscape) {
+        width: 500px;
+      }
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="ga4f">Compiles to:</p>
+          <pre data-anchor-id="cve0"><code class="language-css">@media screen and (orientation: landscape) {
+    .sidebar {
+      width: 500px; } }
+  </code></pre>
+          <p data-anchor-id="9pea">@media can even use SassScript (such as variables, functions, and operators) instead
+            of condition names or values:</p>
+          <p data-anchor-id="12im">Finally, <code>@media</code>queries can include SassScript expressions (including
+            variables, functions, and operators) instead of feature names and feature values.</p>
+          <pre data-anchor-id="c949"><code class="language-scss">$media: screen;
+      $feature: -webkit-min-device-pixel-ratio;
+  $value: 1.5;
+  
+  @media #{$media} and ($feature: $value) {
+    .sidebar {
+      width: 500px;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="995z">Compiles to:</p>
+          <pre data-anchor-id="7til"><code class="language-css">@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    .sidebar {
+      width: 500px; } }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="extend" data-anchor-id="mmmg"><code>@extend</code></h3>
+          <p data-anchor-id="3f1v">This is often the case when designing a page: when a style class contains all the
+            styles of another class, and its own specific style. The most common way to deal with this is to use both a
+            generic style class and a special style class in HTML. For example, suppose we design a style that requires
+            both a common error and a severe error. We can write something like this:</p>
+          <pre data-anchor-id="70u8"><code class="language-html">&lt;div class="error seriousError"&gt;
+    Oh no! You've been hacked!
+  &lt;/div&gt;
+  </code></pre>
+          <p data-anchor-id="gyt2">Our style is as follows</p>
+          <pre data-anchor-id="vsyt"><code class="language-css">.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError {
+    border-width: 3px;
+  }
+  </code></pre>
+          <p data-anchor-id="hc8w">Unfortunately, this means that we must always remember to use
+            <code>.seriousError</code>them together <code>.error</code>. <br>
+            This is a burden for maintenance and even leads to tricky mistakes and leads to unspoken styles.</p>
+          <p data-anchor-id="eqvd"><code>@extend</code>The directive avoids these problems and tells Sass that the style
+            of one selector should inherit another. E.g:</p>
+          <pre data-anchor-id="b9j1"><code class="language-scss">.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+  </code></pre>
+          <p data-anchor-id="i6a5">Compiles to:</p>
+          <pre data-anchor-id="npqb"><code class="language-css">.error, .seriousError {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  
+  .seriousError {
+    border-width: 3px;
+  }
+  </code></pre>
+          <p data-anchor-id="0rut">This means <code>.error</code>that all styles defined also apply
+            <code>.seriousError</code>, except <code>.seriousError</code>for specific styles. Equivalently, every
+            <code>.seriousError</code>element with a <code>.error</code>class also carries a class.</p>
+          <p data-anchor-id="ai7x">Other <code>.error</code>rules that use the same will be inherited to
+            <code>.seriousError</code>, for example, if we have a special wrong style hack:</p>
+          <pre data-anchor-id="3cwh"><code class="language-css">.error.intrusion {
+    background-image: url("/image/hacked.png");
+  }
+  </code></pre>
+          <p data-anchor-id="a23c">And <code>&lt;div class="seriousError intrusion"&gt;</code>we will also use the
+            <code>hacked.png</code>background.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="how-it-works" data-anchor-id="k2ie">How it works</h4>
+          <p data-anchor-id="rnzo"><code>@extend</code><code>.error</code>Insert an extended selector (for example
+            <code>.seriousError</code>) by appearing in the style sheet where the extended selector (for example )
+            appears . Take the example above:</p>
+          <pre data-anchor-id="s2y3"><code class="language-scss">.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .error.intrusion {
+    background-image: url("/image/hacked.png");
+  }
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+  </code></pre>
+          <p data-anchor-id="3m7d">Compiles to:</p>
+          <pre data-anchor-id="1sbh"><code class="language-css">.error, .seriousError {
+    border: 1px #f00;
+    background-color: #fdd; }
+  
+  .error.intrusion, .seriousError.intrusion {
+    background-image: url("/image/hacked.png"); }
+  
+  .seriousError {
+    border-width: 3px; }
+  </code></pre>
+          <p data-anchor-id="guev">When merging selectors, she <code>@extend</code>is clever to avoid unnecessary
+            duplication, so like <code>.seriousError.seriousError</code>will convert to <code>.seriousError</code>, and
+            in addition, she won't generate selectors that cannot match any element (for example
+            <code>#main#footer</code>).</p>
+          <div class="md-section-divider"></div>
+          <h4 id="extending-complex-selectors" data-anchor-id="6kjw">Extended Complex Selectors</h4>
+          <p data-anchor-id="i0ok">Class selectors are not the only ones that can be extended. Sass allows any selector
+            defined to a single element to be extended, such as .special.cool, a: hover or a.user [href ^ = "http: //"]
+            Etc, for example:</p>
+          <p data-anchor-id="3ml0">Class selection is not the only extensibility. She can extend any individual
+            definition of the selector element, such as <code>.special.cool</code>, <code>a:hover</code>, or
+            <code>a.user[href^="http://"]</code>. E.g:</p>
+          <pre data-anchor-id="b1y8"><code class="language-scss">.hoverlink {
+    @extend a:hover;
+  }
+  </code></pre>
+          <p data-anchor-id="1u8p">As with the class element, this means that the <code>a:hover</code>defined styles
+            also apply <code>.hoverlink</code>. E.g:</p>
+          <pre data-anchor-id="u3p5"><code class="language-scss">.hoverlink {
+    @extend a:hover;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  </code></pre>
+          <p data-anchor-id="ljtj">Compiles to:</p>
+          <pre data-anchor-id="rzv8"><code class="language-css">a:hover, .hoverlink {
+    text-decoration: underline; }
+  </code></pre>
+          <p data-anchor-id="8n5n">And the above <code>.error.intrusion</code>examples, like <code>a:hover</code>in all
+            styles will to inherit <code>.hoverlink</code>, even including the use of her other styles, such as:</p>
+          <pre data-anchor-id="2q8z"><code class="language-scss">.hoverlink {
+    @extend a:hover;
+  }
+  .comment a.user:hover {
+    font-weight: bold;
+  }
+  </code></pre>
+          <p data-anchor-id="p2ou">Compiles to:</p>
+          <pre data-anchor-id="1jmg"><code class="language-css">.comment a.user:hover, .comment .user.hoverlink {
+    font-weight: bold; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="multiple-extends" data-anchor-id="l713">Multiple Extends</h4>
+          <p data-anchor-id="ywoa">The same selector can expand multiple selectors. This means that it inherits all the
+            styles of the extended selector. E.g:</p>
+          <pre data-anchor-id="dnw1"><code class="language-scss">.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .attention {
+    font-size: 3em;
+    background-color: #ff0;
+  }
+  .seriousError {
+    @extend .error;
+    @extend .attention;
+    border-width: 3px;
+  }
+  </code></pre>
+          <p data-anchor-id="i0il">Compiles to:</p>
+          <pre data-anchor-id="vjyf"><code class="language-css">.error, .seriousError {
+    border: 1px #f00;
+    background-color: #fdd; }
+  
+  .attention, .seriousError {
+    font-size: 3em;
+    background-color: #ff0; }
+  
+  .seriousError {
+    border-width: 3px; }
+  </code></pre>
+          <p data-anchor-id="753b">Each <code>.seriousError</code>element with a class also has
+            <code>.error</code>classes and <code>.attention</code>classes. <br>
+            Therefore, the definition of style in the back of the document takes precedence over the definition of style
+            in front of the document: <code>.seriousError</code>The background color is <code>#ff0</code>, rather
+            <code>#fdd</code>, because <code>.attention</code>in <code>.error</code>the definition of the back.</p>
+          <p data-anchor-id="lsbq">Multiple extensions can also be written with a comma-separated list of selectors. For
+            example, <code>@extend .error, .attention</code>equivalent <code>@extend .error; @extend .attention</code>.
+          </p>
+          <div class="md-section-divider"></div>
+          <h4 id="chaining-extends" data-anchor-id="gl8t">Chaining Extends</h4>
+          <p data-anchor-id="en9e">One selector can expand another selector, and another selector expands the third
+            selector selection. E.g:</p>
+          <pre data-anchor-id="m8oy"><code class="language-scss">.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+  .criticalError {
+    @extend .seriousError;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+  }
+  </code></pre>
+          <p data-anchor-id="rvqy">Now, with <code>.seriousError</code>each element of class will contain
+            <code>.error</code>class, with <code>.criticalError</code>each element of the class includes not only the
+            <code>.criticalError</code>class will also include <code>.error</code>classes, the above code is compiled as
+            follows:</p>
+          <pre data-anchor-id="1siq"><code class="language-css">.error, .seriousError, .criticalError {
+    border: 1px #f00;
+    background-color: #fdd; }
+  
+  .seriousError, .criticalError {
+    border-width: 3px; }
+  
+  .criticalError {
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="selector-sequences" data-anchor-id="l9c0">Selector Sequences</h4>
+          <p data-anchor-id="tddp">Selector sequences such as <code>.foo .bar</code>or <code>.foo + .bar</code>are not
+            currently available as extensions. However, the selector sequence itself can be used <code>@extend</code>.
+            E.g:</p>
+          <pre data-anchor-id="abrp"><code class="language-scss">#fake-links .link {
+    @extend a;
+  }
+  
+  a {
+    color: blue;
+    &amp;:hover {
+      text-decoration: underline;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="u51a">Will be compiled to:</p>
+          <pre data-anchor-id="6fad"><code class="language-css">a, #fake-links .link {
+    color: blue; }
+    a:hover, #fake-links .link:hover {
+      text-decoration: underline; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h5 id="merging-selector-sequences" data-anchor-id="pdwv">Merging Selector Sequences</h5>
+          <p data-anchor-id="izj3">Sometimes a selector sequence extends another selector, and this selector appears in
+            another selector sequence. In this case, the two selector sequences need to be merged. E.g:</p>
+          <pre data-anchor-id="xgnl"><code class="language-scss">#admin .tabbar a {
+    font-weight: bold;
+  }
+  #demo .overview .fakelink {
+    @extend a;
+  }
+  </code></pre>
+          <p data-anchor-id="5ubl">Technically speaking, it can generate the results of all the matching conditions, but
+            the style sheet generated is too complicated. The simple example above may have 10 results. So, Sass will
+            only compile and output useful selectors.</p>
+          <p data-anchor-id="0ez8">When two columns are merged, if they do not contain the same selector, two new
+            selectors are generated: the first is listed before the second, or the second is listed before the first.
+            E.g:</p>
+          <pre data-anchor-id="kv4s"><code class="language-scss">#admin .tabbar a {
+    font-weight: bold;
+  }
+  #demo .overview .fakelink {
+    @extend a;
+  }
+  </code></pre>
+          <p data-anchor-id="m3jj">Compiles to:</p>
+          <pre data-anchor-id="mrd5"><code class="language-css">#admin .tabbar a,
+  #admin .tabbar #demo .overview .fakelink,
+  #demo .overview #admin .tabbar .fakelink {
+    font-weight: bold; }
+  </code></pre>
+          <p data-anchor-id="03wv">If two columns contain the same selector, the same parts will be merged together, and
+            the other parts will be output alternately. In the following example, both columns are included
+            <code>#admin</code>, and they are merged together in the output:</p>
+          <pre data-anchor-id="pe4y"><code class="language-scss">#admin .tabbar a {
+    font-weight: bold;
+  }
+  #admin .overview .fakelink {
+    @extend a;
+  }
+  </code></pre>
+          <p data-anchor-id="flg4">Compiles to:</p>
+          <pre data-anchor-id="8otj"><code class="language-css">#admin .tabbar a,
+  #admin .tabbar .overview .fakelink,
+  #admin .overview .tabbar .fakelink {
+    font-weight: bold; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="placeholders" data-anchor-id="q3xp"><code>@extend</code>-Only <code>@extend</code>Selectors</h4>
+          <p data-anchor-id="zgl2">Sometimes you just want to write a <code>@extend</code>extended style class, you do
+            not want to use directly in your HTML. When writing a Sass style library, which is particularly useful if
+            they need to, where you can provide <code>@extend</code>extended style to the user, if they do not directly
+            overlooked.</p>
+          <p data-anchor-id="81sw">In this case, if you use ordinary style classes, you will have a lot of extra (note:
+            useless) CSS in the style sheet you end up generating, and it is easy to cause when HTML is used in
+            combination with other style classes. conflict. That's why Sass supports "placeholders" (for example,
+            <code>%foo</code>).</p>
+          <p data-anchor-id="b2km">Placeholder selector looks like an ordinary class and id selector only
+            <code>#</code>, or <code>.</code>is replaced <code>%</code>. It can be used like a class or id selector, and
+            its rules are not compiled into CSS files. E.g:</p>
+          <pre data-anchor-id="3nol"><code class="language-scss">// This ruleset won't be rendered on its own.
+  #context a%extreme {
+    color: blue;
+    font-weight: bold;
+    font-size: 2em;
+  }
+  </code></pre>
+          <p data-anchor-id="i0ht">Placeholder selectors, just like class and id selectors, can be used for extensions.
+            Extension selectors will be compiled into CSS, and placeholder selectors themselves will not be compiled.
+            E.g:</p>
+          <pre data-anchor-id="22v3"><code class="language-scss">.notice {
+    @extend %extreme;
+  }
+  </code></pre>
+          <p data-anchor-id="u69b">Compiles to:</p>
+          <pre data-anchor-id="b3rk"><code class="language-css">#context a.notice {
+    color: blue;
+    font-weight: bold;
+    font-size: 2em; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="the-optional-flag" data-anchor-id="jm44"><code>!optional</code>The <code>!optional</code>Flag</h4>
+          <p data-anchor-id="se0j">Usually, when you expand a selector, if it <code>@extend</code>doesn't work, you will
+            get an error message. <br>
+            For example, if there is no <code>.notice</code>selector, so you write
+            <code>a.important {@extend .notice}</code>, it will be thrown. If only <code>h1.notice</code>one selector is
+            included <code>.notice</code>, an error will also be reported. As <code>h1</code>will the
+            <code>a</code>conflict, and will not generate a new selector.</p>
+          <p data-anchor-id="8fu3">However, sometimes, you <code>@extend</code>don't want to generate any new selectors.
+            Just after selecting add <code>!optional</code>logo on it. E.g:</p>
+          <pre data-anchor-id="9dhf"><code class="language-scss">a.important {
+    @extend .notice !optional;
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="extend-in-directives" data-anchor-id="qwad">Instruction <code>@extend</code>( <code>@extend</code>in
+            Directives)</h4>
+          <p data-anchor-id="adx9">In the instruction <code>@extend</code>time (such as in the
+            <code>@media</code>middle), there are some limitations: Sass will not <code>@media</code>expand the outer
+            layer to CSS rules CSS layer in the instruction, it will generate a lot of dead code. This means that if
+            used in <code>@media</code>(or other CSS directives) <code>@extend</code>, it must be extended to selectors
+            in the same directive layer.</p>
+          <p data-anchor-id="4kg2">The following example works:</p>
+          <pre data-anchor-id="0knb"><code class="language-scss">@media print {
+    .error {
+      border: 1px #f00;
+      background-color: #fdd;
+    }
+    .seriousError {
+      @extend .error;
+      border-width: 3px;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="kr5h">But the following example will report an error:</p>
+          <pre data-anchor-id="uu3b"><code class="language-scss">.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  
+  @media print {
+    .seriousError {
+      // INVALID EXTEND: .error is used outside of the "@media print" directive
+      @extend .error;
+      border-width: 3px;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="jj4y">I hope that one day, the browser can natively supports
+            <code>@extend</code>instruction, so that you can <code>@media</code>use and extend the functionality of
+            other instructions.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="at-root" data-anchor-id="zy6h"><code>@at-root</code></h3>
+          <p data-anchor-id="sqbd"><code>@at-root</code>Directives cause one or more rules to be restricted to output at
+            the root level of the document, rather than being nested under its parent selector. <br>
+            It can be used with single or inline selectors:</p>
+          <pre data-anchor-id="ih0k"><code class="language-scss">.parent {
+    ...
+    @at-root .child { ... }
+  }
+  </code></pre>
+          <p data-anchor-id="xgs9">This will generate:</p>
+          <pre data-anchor-id="a3cx"><code class="language-css">.parent { ... }
+  .child { ... }
+  </code></pre>
+          <p data-anchor-id="afay">Or it can be used in a code block containing multiple selectors:</p>
+          <pre data-anchor-id="4jyh"><code class="language-scss">.parent {
+    ...
+    @at-root {
+      .child1 { ... }
+      .child2 { ... }
+    }
+    .step-child { ... }
+  }
+  </code></pre>
+          <p data-anchor-id="8rmn">This will output the following:</p>
+          <pre data-anchor-id="hcod"><code class="language-css">.parent { ... }
+  .child1 { ... }
+  .child2 { ... }
+  .parent .step-child { ... }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="at-root-without-and-at-root-with" data-anchor-id="znd5"><code>@at-root (without: ...)</code>And
+            <code>@at-root (with: ...)</code>( <code>@at-root (without: ...)</code>and `@ at-root (with: ...))</h4>
+          <p data-anchor-id="mn17">By default, <code>@at-root</code>selectors are simply excluded. However, it can also
+            be used to <code>@at-root</code>move selectors out of nested instructions (for example <code>@media</code>).
+            E.g:</p>
+          <pre data-anchor-id="gv3r"><code class="language-scss">@media print {
+    .page {
+      width: 8in;
+      @at-root (without: media) {
+        color: red;
+      }
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="cmyx">generate:</p>
+          <pre data-anchor-id="0iga"><code class="language-css">@media print {
+    .page {
+      width: 8in;
+    }
+  }
+  .page {
+    color: red;
+  }
+  </code></pre>
+          <p data-anchor-id="jakf">You can use to <code>@at-root (without: ...)</code>move rules out of any instruction.
+            You can also make multiple instructions to do this, as long as a plurality of instructions can be separated
+            by spaces: the <code>@at-root (without: media supports)</code>will to move rules <code>@media</code>and
+            <code>@supports</code>queries (queries) away.</p>
+          <p data-anchor-id="qkqg">There are two special values &#8203;&#8203;you can pass to <code>@at-root</code>. "rule" refers
+            to normal CSS rules; <code>@at-root (without: rule)</code>equivalent to no query <code>@at-root</code>.
+            <code>@at-root (without: all)</code>This means that the style should move beyond <em>all</em> directives and
+            CSS rules.</p>
+          <p data-anchor-id="9ez8">If you want to specify which directives or rules are included, rather than which
+            should be excluded, then you can use <code>with</code>instead <code>without</code>. <br>
+            For example, <code>@at-root (with: rule)</code>move the rule out of all directives, but keep it inside the
+            CSS rules.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="debug" data-anchor-id="ri03"><code>@debug</code></h3>
+          <p data-anchor-id="z81m"><code>@debug</code>The instruction prints the value of a SassScript expression to the
+            standard error output stream. This is useful for debugging Sass files with complex SassScript expressions.
+            E.g:</p>
+          <pre data-anchor-id="dbkq"><code class="language-scss">@debug 10em + 12em;
+  </code></pre>
+          <p data-anchor-id="fayc">Output:</p>
+          <pre data-anchor-id="bewp"><code class="language-css">Line 1 DEBUG: 22em
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="warn" data-anchor-id="w4ni"><code>@warn</code></h3>
+          <p data-anchor-id="sy59"><code>@warn</code>The instruction prints the value of a SassScript expression to the
+            standard error output stream. This is useful to warn users to deprecate libraries or fix minor errors in
+            mixins. <code>@warn</code>And <code>@debug</code>there are major differences between the two:</p>
+          <ol data-anchor-id="urkb">
+            <li>You can turn off warnings using <code>--quiet</code>command line options or <code>:quiet</code>Sass
+              options.</li>
+            <li>Style sheet tracking will be printed with the message so that users can see where their style caused the
+              warning.</li>
+          </ol>
+          <p data-anchor-id="l2hu">Example usage:</p>
+          <pre data-anchor-id="uykk"><code class="language-scss">@mixin adjust-location($x, $y) {
+    @if unitless($x) {
+          @warn "Assuming #{$x} to be in pixels";
+          $x: 1px * $x;
+        }
+        @if unitless($y) {
+      @warn "Assuming #{$y} to be in pixels";
+          $y: 1px * $y;
+        }
+        position: relative; left: $x; top: $y;
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="error" data-anchor-id="2fd2"><code>@error</code></h3>
+          <p data-anchor-id="rn4p"><code>@error</code>The instruction throws the value of a SassScript expression as a
+            fatal error, which includes a nice stack trace. This is useful for verifying mixins and function parameters.
+            E.g:</p>
+          <pre data-anchor-id="c2zk"><code class="language-scss">@mixin adjust-location($x, $y) {
+    @if unitless($x) {
+          @error "$x may not be unitless, was #{$x}.";
+        }
+        @if unitless($y) {
+      @error "$y may not be unitless, was #{$y}.";
+        }
+        position: relative; left: $x; top: $y;
+  }
+  </code></pre>
+          <p data-anchor-id="yr0l">There is currently no way to catch errors.</p>
+          <div class="md-section-divider"></div>
+          <h2 id="control-directives-expressions" data-anchor-id="0ig4">Control Directives &amp; Expressions</h2>
+          <p data-anchor-id="ziez">SassScript supports some basic control instructions and expressions, such as
+            including styles only under certain conditions, or including the same style several times.</p>
+          <p data-anchor-id="arry"><strong>Note: The</strong> control instruction is an advanced feature that is not
+            commonly used in daily writing. It is mainly used in <a href="#mixins">mixins</a> instructions, especially
+            libraries like <a href="http://compass-style.org" target="_blank">Compass</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="if" data-anchor-id="ipbi"><code>if()</code></h3>
+          <p data-anchor-id="xccx">Built-in <code>if()</code>functions let you process branches in one condition and
+            return two possible results. It can be used in any script context. <code>if</code>The function evaluates
+            only the corresponding parameter and returns-this allows you to reference a variable that has been defined
+            or can be calculated, otherwise it will cause an error (for example, division by zero).</p>
+          <pre data-anchor-id="g8jh"><code class="language-scss">if(true, 1px, 2px) =&gt; 1px
+  if(false, 1px, 2px) =&gt; 2px
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="if_" data-anchor-id="rorn"><code>@if</code></h3>
+          <p data-anchor-id="0zf3"><code>@if</code>Instruction requires a SassScript expression and the nested style
+            below it to be used, if the expression value is not returned <code>false</code>or <code>null</code>, then
+            spend behind in brackets will return:</p>
+          <pre data-anchor-id="3ebh"><code class="language-scss">p {
+    @if 1 + 1 == 2 { border: 1px solid;  }
+    @if 5 &lt; 3      { border: 2px dotted; }
+    @if null       { border: 3px double; }
+  }
+  </code></pre>
+          <p data-anchor-id="tydi">Compiles to:</p>
+          <pre data-anchor-id="7ajb"><code class="language-css">p {
+    border: 1px solid; }
+  </code></pre>
+          <p data-anchor-id="8n63"><code>@if</code>Behind the statement with multiple <code>@else if</code>statements
+            and a <code>@else</code>statement. <br>
+            &nbsp;If the <code>@if</code>statement fails, Sass will try the <code>@else if</code>statements one by one
+            until one succeeds, or if all fails, the <code>@else</code>statement will be executed . E.g:</p>
+          <pre data-anchor-id="cmjp"><code class="language-scss">$type: monster;
+      p {
+        @if $type == ocean {
+          color: blue;
+        } @else if $type == matador {
+          color: red;
+        } @else if $type == monster {
+      color: green;
+    } @else {
+      color: black;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="n30x">Compiles to:</p>
+          <pre data-anchor-id="yg00"><code class="language-css">p {
+    color: green; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="for" data-anchor-id="apwo"><code>@for</code></h3>
+          <p data-anchor-id="59wg"><code>@for</code>The instruction repeatedly outputs a set of styles. For each
+            iteration, the counter variable is used to adjust the output. This instruction has two forms:
+            <code>@for $var from &lt;start&gt; through &lt;end&gt;</code>and
+            <code>@for $var from &lt;start&gt; to &lt;end&gt;</code>. Note the keywords <code>through</code>and
+            <code>to</code>different. <code>$var</code>It can be any variable name, for example <code>$i</code>;
+            <code>&lt;start&gt;</code>and <code>&lt;end&gt;</code>should return an integer SassScript expression. When
+            the <code>&lt;start&gt;</code>ratio is <code>&lt;end&gt;</code>larger, the counter is decremented instead of
+            incremented.</p>
+          <p data-anchor-id="inve"><code>@for</code>The statement is set <code>$var</code>to each consecutive value in
+            the specified range, and <code>$var</code>the value used in the nested style of each output . For
+            <code>from ... through</code>a form, the range <em>including</em><code>&lt;start&gt;</code> and
+            <code>&lt;end&gt;</code>values, but <code>from ... to</code>the form of the
+            <code>&lt;start&gt;</code>operation start, <em>but does not include</em><code>&lt;end&gt;</code> value.
+            Using <code>through</code>syntax,</p>
+          <pre data-anchor-id="exx8"><code class="language-scss">@for $i from 1 through 3 {
+        .item-#{$i} { width: 2em * $i; }
+  }
+  </code></pre>
+          <p data-anchor-id="vi4o">Compiles to:</p>
+          <pre data-anchor-id="bghs"><code class="language-css">.item-1 {
+    width: 2em; }
+  .item-2 {
+    width: 4em; }
+  .item-3 {
+    width: 6em; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="each-directive" data-anchor-id="ph74"><code>@each</code></h3>
+          <p data-anchor-id="pxg5"><code>@each</code>The format of the instruction is usually
+            <code>@each $var in &lt;list or map&gt;</code>. <code>$var</code>It can be any variable name, like
+            <code>$length</code>or <code>$name</code>, and <code>&lt;list or map&gt;</code>is a SassScript expression
+            that returns a list or map.</p>
+          <p data-anchor-id="hk79"><code>@each</code>The rule will be <code>$var</code>set to each item in the list or
+            map, with <code>$var</code>the values used in the output style . E.g:</p>
+          <pre data-anchor-id="zvea"><code class="language-scss">@each $animal in puma, sea-slug, egret, salamander {
+        .#{$animal}-icon {
+          background-image: url('/images/#{$animal}.png');
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="b000">Compiles to:</p>
+          <pre data-anchor-id="6j6f"><code class="language-css">.puma-icon {
+    background-image: url('/images/puma.png'); }
+  .sea-slug-icon {
+    background-image: url('/images/sea-slug.png'); }
+  .egret-icon {
+    background-image: url('/images/egret.png'); }
+  .salamander-icon {
+    background-image: url('/images/salamander.png'); }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="each-multi-assign" data-anchor-id="i3dg">Multiple Assignment</h4>
+          <p data-anchor-id="531x"><code>@each</code>Instructions can also use multiple variables in the format
+            <code>@each $var1,$var2, ... in &lt;list&gt;</code>. In the case <code>&lt;list&gt;</code>of a list, each
+            element in the sublist is assigned to its own variable. E.g:</p>
+          <pre data-anchor-id="7ujh"><code class="language-scss">@each $animal, $color, $cursor in (puma, black, default),
+                                        (sea-slug, blue, pointer),
+                                        (egret, white, move) {
+        .#{$animal}-icon {
+          background-image: url('/images/#{$animal}.png');
+          border: 2px solid $color;
+          cursor: $cursor;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="qxdo">Compiles to:</p>
+          <pre data-anchor-id="4uiz"><code class="language-css">.puma-icon {
+    background-image: url('/images/puma.png');
+    border: 2px solid black;
+    cursor: default; }
+  .sea-slug-icon {
+    background-image: url('/images/sea-slug.png');
+    border: 2px solid blue;
+    cursor: pointer; }
+  .egret-icon {
+    background-image: url('/images/egret.png');
+    border: 2px solid white;
+    cursor: move; }
+  </code></pre>
+          <p data-anchor-id="bmfh">Because <a href="#maps">maps</a> are treated as a list of key-value pairs, multiple
+            assignments also work well. E.g:</p>
+          <pre data-anchor-id="1quo"><code class="language-scss">@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+    #{$header} {
+          font-size: $size;
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="ag0t">Compiles to:</p>
+          <pre data-anchor-id="wd5j"><code class="language-css">h1 {
+    font-size: 2em; }
+  h2 {
+    font-size: 1.5em; }
+  h3 {
+    font-size: 1.2em; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="while" data-anchor-id="ajp9"><code>@while</code></h3>
+          <p data-anchor-id="pgwt"><code>@while</code>The instruction repeatedly outputs the nested style until the
+            SassScript expression returns a result <code>false</code>. This can be used to implement
+            <code>@for</code>more complex loops than statements, but it is rarely used such as:</p>
+          <pre data-anchor-id="zbqn"><code class="language-scss">$i: 6;
+      @while $i &gt; 0 {
+    .item-#{$i} { width: 2em * $i; }
+        $i: $i - 2;
+  }
+  </code></pre>
+          <p data-anchor-id="v7ib">Compiles to:</p>
+          <pre data-anchor-id="pthg"><code class="language-css">.item-6 {
+    width: 12em; }
+  
+  .item-4 {
+    width: 8em; }
+  
+  .item-2 {
+    width: 4em; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h2 id="mixins" data-anchor-id="uz2o">Mixin Directives</h2>
+          <p data-anchor-id="tlxx">Mixins allow you to define styles that can be reused throughout the stylesheet
+            without the use of non-semantic classes, such as <code>.float-left</code>. Mixins can also include all CSS
+            rules, and anything else allowed in Sass documents. <br>
+            They can even bring <a href="#mixin-arguments">arguments</a> , introduce variables, and output a variety of
+            styles with a small amount of mixin code.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="defining_a_mixin" data-anchor-id="dtdx">Definition of a mixed (a mixin): <code>@mixin</code>(A Mixin
+            the Defining: <code>@mixin</code>)</h3>
+          <p data-anchor-id="t6m5">Mixing (a mixin) by the <code>@mixin</code>definition instruction. It is followed by
+            the name of the mixin and optional <a href="#mixin-arguments">arguments (parameters)</a> , and the content
+            block of the mixin. For example, <code>large-text</code>mixin is defined as follows:</p>
+          <pre data-anchor-id="72ap"><code class="language-scss">@mixin large-text {
+    font: {
+      family: Arial;
+      size: 20px;
+      weight: bold;
+    }
+    color: #ff0000;
+  }
+  </code></pre>
+          <p data-anchor-id="yj9k">Blends can also contain a mix of selectors and attributes, and selectors can even
+            contain <a href="#referencing_parent_selectors_">parent references</a> . E.g:</p>
+          <pre data-anchor-id="fuhg"><code class="language-scss">@mixin clearfix {
+    display: inline-block;
+    &amp;:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    * html &amp; { height: 1px }
+  }
+  </code></pre>
+          <p data-anchor-id="sost">For historical reasons, mixin names (and all other Sass identifiers) are
+            interchangeable with hyphens and underscores. For example, if you define a <code>add-column</code>mixin
+            named , you can treat it as a <code>add_column</code>vice-versa.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="including_a_mixin" data-anchor-id="zp8i">Reference style mixing: <code>@include</code>(A Mixin
+            Including: <code>@include</code>)</h3>
+          <p data-anchor-id="07ps">Use <code>@include</code>instructions may be mixed into (a mixin) introduced into the
+            document. This requires a mixin name and optional <a href="#mixin-arguments">parameters to be passed to
+              it</a> , and includes the style of the current rule defined by the mixin. E.g:</p>
+          <pre data-anchor-id="9ndo"><code class="language-scss">.page-title {
+    @include large-text;
+    padding: 4px;
+    margin-top: 10px;
+  }
+  </code></pre>
+          <p data-anchor-id="esh1">Compiles to:</p>
+          <pre data-anchor-id="077g"><code class="language-css">.page-title {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff0000;
+    padding: 4px;
+    margin-top: 10px; }
+  </code></pre>
+          <p data-anchor-id="p911">Mixins can also be included outside of any rule (ie, at the root of the document), as
+            long as they don't directly define any attributes or use any parent selector references. E.g:</p>
+          <pre data-anchor-id="rl03"><code class="language-scss">@mixin silly-links {
+    a {
+      color: blue;
+      background-color: red;
+    }
+  }
+  
+  @include silly-links;
+  </code></pre>
+          <p data-anchor-id="5v5v">Compiles to:</p>
+          <pre data-anchor-id="q9t2"><code class="language-css">a {
+    color: blue;
+    background-color: red; }
+  </code></pre>
+          <p data-anchor-id="m81c">A mixin definition can also include other mixins. E.g:</p>
+          <pre data-anchor-id="dy9b"><code class="language-scss">@mixin compound {
+    @include highlighted-background;
+    @include header-text;
+  }
+  
+  @mixin highlighted-background { background-color: #fc0; }
+  @mixin header-text { font-size: 20px; }
+  </code></pre>
+          <p data-anchor-id="feja">Mixing can include itself. This behavior is different from versions before Sass 3.3,
+            where mixin recursion was previously prohibited.</p>
+          <p data-anchor-id="qqe4">A mix-in that only defines descendant selectors can be safely mixed into the top
+            level of the file.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="mixin-arguments" data-anchor-id="ycue">Arguments</h3>
+          <p data-anchor-id="xhts">Mixins can take SassScript values &#8203;&#8203;as parameters. The given parameters are included
+            in the mixin and provided to the mixin as variables.</p>
+          <p data-anchor-id="bm3x">When defining a mixin, the parameter is used as the variable name and written in
+            parentheses after the mixin name. Multiple parameters can be separated by commas. Then, when the mixin is
+            called, the values &#8203;&#8203;are passed in the corresponding parameter order. E.g:</p>
+          <pre data-anchor-id="pghm"><code class="language-scss">@mixin sexy-border($color, $width) {
+    border: {
+      color: $color;
+          width: $width;
+      style: dashed;
+    }
+  }
+  
+  p { @include sexy-border(blue, 1in); }
+  </code></pre>
+          <p data-anchor-id="ohiq">Compiles to:</p>
+          <pre data-anchor-id="bto0"><code class="language-css">p {
+    border-color: blue;
+    border-width: 1in;
+    border-style: dashed; }
+  </code></pre>
+          <p data-anchor-id="byap">Mixins can also specify default values &#8203;&#8203;for parameters using ordinary variable
+            assignment syntax. Then, when calling mixin, if no parameter is assigned a value, the default value is
+            automatically used instead. E.g:</p>
+          <pre data-anchor-id="xnwz"><code class="language-scss">@mixin sexy-border($color, $width: 1in) {
+    border: {
+      color: $color;
+          width: $width;
+      style: dashed;
+    }
+  }
+  p { @include sexy-border(blue); }
+  h1 { @include sexy-border(blue, 2in); }
+  </code></pre>
+          <p data-anchor-id="2ao4">Compiles to:</p>
+          <pre data-anchor-id="0yyg"><code class="language-css">p {
+    border-color: blue;
+    border-width: 1in;
+    border-style: dashed; }
+  
+  h1 {
+    border-color: blue;
+    border-width: 2in;
+    border-style: dashed; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h4 id="keyword-arguments-mixin" data-anchor-id="5gk2">Keyword Arguments</h4>
+          <p data-anchor-id="rmiv">Mixins <code>@include</code>can also use explicit keyword arguments when they are
+            introduced ( instructions). For example, the above example can be written as:</p>
+          <pre data-anchor-id="zoxp"><code class="language-scss">p { @include sexy-border($color: blue); }
+      h1 { @include sexy-border($color: blue, $width: 2in); }
+  </code></pre>
+          <p data-anchor-id="fxoo">Although this is not concise enough, it can make the style sheet easier to read. It
+            presents a more flexible interface to functions, which makes multi-parameter mixing easier to call.</p>
+          <p data-anchor-id="xghw">Named parameters can be passed in any order, and parameters with default values &#8203;&#8203;can
+            be omitted. Because named parameters are variable names, underscores and hyphens can be used
+            interchangeably.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="variable-arguments" data-anchor-id="1rzm">Variable Arguments</h4>
+          <p data-anchor-id="sac2">Sometimes it is not possible to determine how many parameters a mixin or function
+            uses. For example, a mixin used to create a box-shadow can take any number of box-shadows as parameters. For
+            these cases, Sass supports "variable parameters" where parameters are declared at the end of a mixin or
+            function and all remaining parameters are packed into a <a href="#lists">list</a> . Parameters look just
+            like ordinary parameters, but are followed by them <code>...</code>. E.g:</p>
+          <pre data-anchor-id="52kt"><code class="language-scss">@mixin box-shadow($shadows...) {
+        -moz-box-shadow: $shadows;
+        -webkit-box-shadow: $shadows;
+        box-shadow: $shadows;
+  }
+  
+  .shadows {
+    @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+  }
+  </code></pre>
+          <p data-anchor-id="4os7">Compiles to:</p>
+          <pre data-anchor-id="8oh5"><code class="language-css">.shadows {
+    -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+    box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  }
+  </code></pre>
+          <p data-anchor-id="6k0y">Variadic parameters can contain any keyword arguments passed to a mixin or function.
+            These can be accessed using <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#keywords-instance_method" target="_blank"><code>keywords($args)</code>functions</a> , returning a map, parameter name strings (none
+            <code>$</code>), and value key-value pairs.</p>
+          <p data-anchor-id="2ckp">Variadic parameters can also be used when calling (@include directives) a mixin.
+            Using the same syntax, you can expand a list of values &#8203;&#8203;so that each value is passed in as a separate
+            parameter, or a map of values &#8203;&#8203;to make each key-value pair treated as a keyword parameter. E.g:</p>
+          <pre data-anchor-id="omnb"><code class="language-scss">@mixin colors($text, $background, $border) {
+        color: $text;
+        background-color: $background;
+        border-color: $border;
+  }
+  
+  $values: #ff0000, #00ff00, #0000ff;
+      .primary {
+        @include colors($values...);
+  }
+  
+  $value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+      .secondary {
+        @include colors($value-map...);
+  }
+  </code></pre>
+          <p data-anchor-id="4y48">Compiles to:</p>
+          <pre data-anchor-id="sghd"><code class="language-css">.primary {
+    color: #ff0000;
+    background-color: #00ff00;
+    border-color: #0000ff;
+  }
+  
+  .secondary {
+    color: #00ff00;
+    background-color: #0000ff;
+    border-color: #ff0000;
+  }
+  </code></pre>
+          <p data-anchor-id="af85">You can pass a list and a map parameter at the same time, as long as the list is
+            before the map, for example <code>@include colors($values..., $map...)</code>.</p>
+          <p data-anchor-id="756q">You can use variable parameters to wrap a mixin and add extra styles without changing
+            the parameter signature of the mixin. If you do this, the keyword arguments will be passed directly through
+            the wrapped mixin. E.g:</p>
+          <pre data-anchor-id="2boy"><code class="language-scss">@mixin wrapped-stylish-mixin($args...) {
+        font-weight: bold;
+        @include stylish-mixin($args...);
+  }
+  
+  .stylish {
+    // The $width argument will get passed on to "stylish-mixin" as a keyword
+        @include wrapped-stylish-mixin(#00ff00, $width: 100px);
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="mixin-content" data-anchor-id="11uj">Passing Content Blocks to a Mixin</h3>
+          <p data-anchor-id="mp21">The style content block can be passed to the mixin where the style is contained. Any
+            style content block will appear in a mixed <code>@content</code>position command. This makes it possible to
+            define the parsing of abstract associations to selectors and instructions.</p>
+          <p data-anchor-id="77xy">E.g:</p>
+          <pre data-anchor-id="r9yt"><code class="language-scss">@mixin apply-to-ie6-only {
+    * html {
+      @content;
+    }
+  }
+  @include apply-to-ie6-only {
+    #logo {
+      background-image: url(/logo.gif);
+    }
+  }
+  </code></pre>
+          <p data-anchor-id="2qav">generate:</p>
+          <pre data-anchor-id="m35d"><code class="language-css">* html #logo {
+    background-image: url(/logo.gif);
+  }
+  </code></pre>
+          <p data-anchor-id="ftps">The same mixing (a mixin) may be <code>.sass</code>abbreviated syntax (
+            <code>@mixin</code>may be <code>=</code>expressed, and <code>@include</code>can be
+            <code>+</code>represented) is accomplished:</p>
+          <pre data-anchor-id="khcg"><code class="language-scss">=apply-to-ie6-only
+    * html
+      @content
+  
+  +apply-to-ie6-only
+    #logo
+      background-image: url(/logo.gif)
+  </code></pre>
+          <p data-anchor-id="1ndj"><strong>Note:</strong> When the <code>@content</code>instruction is specified
+            multiple times or in a loop, the style block will be copied and referenced in each call.</p>
+          <div class="md-section-divider"></div>
+          <h4 id="variable-scope-and-content-blocks" data-anchor-id="9itq">Variable Scope and Content Blocks</h4>
+          <p data-anchor-id="mrxm">The content block passed to the mixin is evaluated in its defined scope, not the
+            scope of the mixin. This means that local variables of the mixin <strong>cannot be</strong> passed to the
+            style block and the variables will be resolved to global values:</p>
+          <pre data-anchor-id="vpol"><code class="language-scss">$color: white;
+      @mixin colors($color: blue) {
+    background-color: $color;
+        @content;
+        border-color: $color;
+  }
+  .colors {
+    @include colors { color: $color; }
+  }
+  </code></pre>
+          <p data-anchor-id="5mbs">Compiles to:</p>
+          <pre data-anchor-id="hup9"><code class="language-css">.colors {
+    background-color: blue;
+    color: white;
+    border-color: blue;
+  }
+  </code></pre>
+          <p data-anchor-id="kgfn">Also, this clearly shows that variables and mixins passed into the block point to
+            other styles around the block definition. E.g:</p>
+          <pre data-anchor-id="fdsu"><code class="language-scss">#sidebar {
+    $sidebar-width: 300px;
+        width: $sidebar-width;
+    @include smartphone {
+      width: $sidebar-width / 3;
+    }
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h2 id="function_directives" data-anchor-id="6n84">Function Directives</h2>
+          <p data-anchor-id="cucd">Sass supports custom functions and can be used in any value or script context. E.g
+          </p>
+          <pre data-anchor-id="e5nu"><code class="language-scss">$grid-width: 40px;
+      $gutter-width: 10px;
+  
+  @function grid-width($n) {
+        @return $n * $grid-width + ($n - 1) * $gutter-width;
+  }
+  
+  #sidebar { width: grid-width(5); }
+  </code></pre>
+          <p data-anchor-id="acrv">Becomes:</p>
+          <pre data-anchor-id="jl8d"><code class="language-css">#sidebar {
+    width: 240px; }
+  </code></pre>
+          <p data-anchor-id="39ei">As you can see, functions can access any globally defined variables and accept
+            parameters, just like a mixin. Functions can contain statements, and you must call <code>@return</code>to
+            set the function's return value.</p>
+          <p data-anchor-id="0tko">As with mixins, you can use keyword arguments to call Sass-defined functions. In the
+            above example, we can call the function like this:</p>
+          <pre data-anchor-id="96x5"><code class="language-scss">#sidebar { width: grid-width($n: 5); }
+  </code></pre>
+          <p data-anchor-id="trg7">It is recommended that you prefix the functions to avoid naming conflicts. When
+            others read the stylesheets, they will know that they are not native to Sass or CSS. For example, if you
+            work for ACME, you can name the function above <code>-acme-grid-width</code>.</p>
+          <p data-anchor-id="1bp3">User-defined functions also support <a href="#variable_arguments">variable
+              parameters</a> in the same way as mixins.</p>
+          <p data-anchor-id="m9l2">For historical reasons, hyphens and underscores are interchangeable in function names
+            (and all other Sass identifiers). For example, if you define a <code>grid-width</code>function named , you
+            can do it by <code>grid_width</code>calling it and vice versa.</p>
+          <div class="md-section-divider"></div>
+          <h2 id="output-style" data-anchor-id="kik9">Output style</h2>
+          <p data-anchor-id="8akk">Although Sass's default CSS output format is very good and reflects the structure of
+            the document, because everyone's preferences and needs are different, Sass supports several other formats.
+          </p>
+          <p data-anchor-id="mu6u">Sass provides four output formats, which can be set via the <a href="#style-option"><code>:style</code>options</a> option, or using the --style option on the command
+            line.</p>
+          <p data-anchor-id="n2k3">Sass allows you to set <a href="#style-option"><code>:style</code>options</a> or use
+            the <code>--style</code>command line flag to choose between four different output formats.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="nested" data-anchor-id="o8mb"><code>:nested</code></h3>
+          <p data-anchor-id="c5h4">The nested format is Sass's default output format because its format reflects CSS
+            styles and HTML document structure. Each attribute occupies a separate line, but indentation is not fixed.
+            Each rule is indented based on its nesting depth. E.g:</p>
+          <pre data-anchor-id="udsv"><code class="language-css">#main {
+    color: #fff;
+    background-color: #000; }
+    #main p {
+      width: 10em; }
+  
+  .huge {
+    font-size: 10em;
+    font-weight: bold;
+    text-decoration: underline; }
+  </code></pre>
+          <p data-anchor-id="3xsk">The nested format is very useful when reading large CSS files: you don't have to read
+            them in detail to make it easy to grasp the structure of the file.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="expanded" data-anchor-id="ebet"><code>:expanded</code></h3>
+          <p data-anchor-id="9yw6">The expanded format is more like hand-written CSS styles, with each property and rule
+            on its own line. The attributes within the rule are indented, but the rule does not have any special
+            indentation. E.g:</p>
+          <pre data-anchor-id="fjca"><code class="language-css">#main {
+    color: #fff;
+    background-color: #000;
+  }
+  #main p {
+    width: 10em;
+  }
+  
+  .huge {
+    font-size: 10em;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="compact" data-anchor-id="oo1k"><code>:compact</code></h3>
+          <p data-anchor-id="xu4f">The compact format takes up less space than the nested or expanded format. This
+            format focuses on selectors, not their attributes. Each CSS rule occupies a separate line, and this line
+            also includes each attribute defined. Nested rules are on a separate line, and non-nested selectors output
+            blank lines as separators. E.g:</p>
+          <pre data-anchor-id="rlty"><code class="language-css">#main { color: #fff; background-color: #000; }
+  #main p { width: 10em; }
+  
+  .huge { font-size: 10em; font-weight: bold; text-decoration: underline; }
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h3 id="compressed" data-anchor-id="5i6n"><code>:compressed</code></h3>
+          <p data-anchor-id="y2kt">The compressed format occupies as little space as possible, there will be a newline
+            at the end of the file, and there are basically no extra spaces except for the necessary delimiting
+            selector. It also includes some other small compression, such as choosing the smallest color Representation.
+            This means poor readability. E.g:</p>
+          <pre data-anchor-id="g7bf"><code class="language-css">#main{color:#fff;background-color:#000}#main p{width:10em}.huge{font-size:10em;font-weight:bold;text-decoration:underline}
+  </code></pre>
+          <div class="md-section-divider"></div>
+          <h2 id="extending-sass" data-anchor-id="ipkq">Extending Sass</h2>
+          <p data-anchor-id="fte4">For unique needs, Sass offers users a number of advanced customization features.
+            Using these features requires a deep understanding of Ruby.</p>
+          <div class="md-section-divider"></div>
+          <h3 id="defining-custom-sass-functions" data-anchor-id="vdnd">Defining Custom Sass Functions</h3>
+          <p data-anchor-id="t1oh">Users can customize Sass function by Ruby API, for more information please see the <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html#adding_custom_functions" target="_blank">source code documentation</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="cache-stores" data-anchor-id="w8fh">Cache Stores</h3>
+          <p data-anchor-id="olgh">Sass caches documents that have already been parsed, which makes them reusable
+            without having to parse them again unless they have been changed. By default, Sass these cache files will be
+            written to <a href="#cache_location-option"><code>:cache_location</code></a>the specified file system. If
+            you can't write to the file system or need a ruby &#8203;&#8203;process or computer to share the cache, then you can
+            define your own cache storage and set <a href="#cache_store-option"><code>:cache_store</code>options</a> .
+            For more information on creating a custom cache store, check out the <a href="http://sass-lang.com/documentation/Sass/CacheStores/Base.html" target="_blank">source code
+              documentation</a> .</p>
+          <div class="md-section-divider"></div>
+          <h3 id="custom-importers" data-anchor-id="mwo1">Custom Importers</h3>
+          <p data-anchor-id="b4mw">Sass import is mainly responsible for getting the paths passed to
+            <code>@import</code>and finding the corresponding Sass code for these paths. By default, this code is loaded
+            from the <a href="http://sass-lang.com/documentation/Sass/Importers/Filesystem.html" target="_blank">file
+              system</a> , but Importers can be loaded from the database, added to Sass via HTTP, or using a different
+            file naming scheme.</p>
+          <p data-anchor-id="9vbh">Each importer is responsible for a separate load path (or any corresponding backend
+            concept). The importer can be placed in <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#load_paths-option" target="_blank"><code>:load_paths</code>an array</a> along with a normal file system path .</p>
+          <p data-anchor-id="e9fc">When parsing one <code>@import</code>, Sass will successfully import the path by
+            looking for the importer by loading the path. Once found, the imported file is used.</p>
+          <p data-anchor-id="x03o">User-created imports must inherit from <a href="http://sass-lang.com/documentation/Sass/Importers/Base.html" target="_blank">Sass :: Importers ::
+              Base</a> .</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <script>ggny2();</script>
+  <div class="container">
+    <a target="_blank" href="http://www.w3ci.com"><img src="images/images-hengfu.jpg"></a>
+  </div>
+  <hr>
+	<span id="w-back-top" class="btn btn-default btn-lg glyphicon glyphicon-arrow-up hide"></span>
+	<script src="js/js-jquery.min.js"></script>
+	<script src="js/js-bootstrap.min.js"></script>
+	<script src="js/js-main.js"></script>
+  <script src="js/js-tongji.js"></script>
+  <script src="js/translate_a-element.js"></script>
+<script> 
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    gaTrack: true,
+    gaId: '',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}</script>
+</body>
+</html>
